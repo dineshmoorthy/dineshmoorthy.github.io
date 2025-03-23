@@ -1,6 +1,6 @@
-# GitHub Pages Deployment Guide
+# GitHub Pages Deployment Guide for selfportfolio
 
-This repository is configured to automatically deploy to GitHub Pages when changes are pushed to the main branch. This document explains how the deployment process works and how to configure it.
+This repository is configured to automatically deploy to GitHub Pages on https://github.com/dineshmoorthy/selfportfolio when changes are pushed to the main branch. This document explains the deployment process step-by-step.
 
 ## Deployment Workflow
 
@@ -8,50 +8,74 @@ The deployment process uses GitHub Actions to build and deploy the portfolio web
 
 1. When you push changes to the `main` branch, the workflow is triggered automatically
 2. The workflow builds the project using `npm run build`
-3. The built files are then deployed to GitHub Pages
+3. The built files are deployed to the `gh-pages` branch of your selfportfolio repository
+4. GitHub Pages serves your site from this branch
 
-## Setup Instructions
+## Step-by-Step Deployment Instructions
 
-To make this deployment work with your GitHub repository, follow these steps:
+### 1. Push Your Code to GitHub
 
-### 1. Enable GitHub Pages
+First, you need to push your Replit project to your GitHub repository:
 
-1. Go to your repository on GitHub
+```bash
+# Initialize git (if not already done)
+git init
+
+# Add all files to staging
+git add .
+
+# Commit changes
+git commit -m "Initial commit from Replit"
+
+# Add your GitHub repository as the remote
+git remote add origin https://github.com/dineshmoorthy/selfportfolio.git
+
+# Push to the main branch
+git push -u origin main
+```
+
+### 2. Configure GitHub Repository Settings
+
+1. Go to https://github.com/dineshmoorthy/selfportfolio
 2. Click on **Settings**
-3. Scroll down to the **GitHub Pages** section
-4. Under **Source**, select **GitHub Actions**
+3. Navigate to **Pages** in the left sidebar
+4. Under **Source**, select the `gh-pages` branch
+5. Click **Save**
 
-### 2. Configure Your Repository
+### 3. Set Up Required Permissions (Only Once)
 
-The workflow is already set up in `.github/workflows/deploy.yml`, but you might need to make a few adjustments:
+For your first deployment, you might need to set up permissions:
 
-- Make sure your repository has the `main` branch (not `master`)
-- If your default branch is different, update the workflow file to match
+1. Go to your repository **Settings**
+2. Navigate to **Actions** > **General** in the left sidebar
+3. Scroll down to "Workflow permissions"
+4. Select "Read and write permissions"
+5. Click **Save**
 
-### 3. First Deployment
+### 4. Trigger Deployment
 
-The first deployment will happen automatically when you push this repository to GitHub. You can also manually trigger a deployment:
+The first deployment will happen automatically when you push to the main branch. You can also manually trigger it:
 
 1. Go to your repository on GitHub
 2. Click on the **Actions** tab
-3. Select the "Deploy Portfolio Website to GitHub Pages" workflow
-4. Click on **Run workflow**
+3. Select the "Deploy to selfportfolio GitHub Pages" workflow
+4. Click on **Run workflow** > **Run workflow**
 
-### 4. Verify Your Deployment
+### 5. Verify Your Deployment
 
 After the workflow completes:
 
-1. Go to your repository settings
-2. Scroll down to the GitHub Pages section
-3. You'll see the URL where your site is published (typically `https://yourusername.github.io/your-repo-name/`)
+1. Go to the **Actions** tab to check that the workflow completed successfully
+2. Your site will be available at: https://dineshmoorthy.github.io/selfportfolio/
 
 ## Troubleshooting
 
 If you encounter issues with the deployment:
 
 1. Check the workflow run in the Actions tab to see any error messages
-2. Make sure your build is generating files in the `dist/public` directory
-3. Verify that your GitHub Pages settings are correctly configured
+2. Verify that your repository settings are correctly configured
+3. Make sure your build is generating files in the `dist/public` directory
+4. Check that the GitHub token has sufficient permissions
 
 ## Additional Configuration Options
 
@@ -60,11 +84,13 @@ If you encounter issues with the deployment:
 To use a custom domain with your GitHub Pages site:
 
 1. Add a CNAME file to the `client/public` directory with your domain
-2. Configure your domain's DNS settings as described in [GitHub's documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+2. Update your Domain's DNS settings as per GitHub's documentation
+3. Configure the custom domain in your repository's GitHub Pages settings
 
 ### Environment Variables
 
 If your build requires environment variables:
 
-1. Add them to your GitHub repository as secrets
-2. Reference them in the workflow file using `${{ secrets.YOUR_SECRET_NAME }}`
+1. Go to repository **Settings** > **Secrets and variables** > **Actions**
+2. Click **New repository secret**
+3. Add your secrets and reference them in the workflow using `${{ secrets.YOUR_SECRET_NAME }}`
