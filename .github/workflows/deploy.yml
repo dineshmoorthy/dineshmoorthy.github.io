@@ -34,7 +34,10 @@ jobs:
       run: find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" | sort
       
     - name: Build project
-      run: npm run build
+      run: |
+        PUBLIC_URL=https://dineshmoorthy.github.io/selfportfolio/
+        VITE_BASE_URL=/selfportfolio/
+        npm run build
       
     - name: Display build output directory
       run: |
