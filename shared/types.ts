@@ -76,6 +76,7 @@ export interface ProfileInfo {
   email: string;
   website: string;
   phone: string;
+  profileImage?: string;
   resumeLink: string;
   socialLinks: {
     github: string;

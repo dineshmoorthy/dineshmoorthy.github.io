@@ -14,8 +14,8 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
           <div className="md:w-1/4">
             <div className="rounded-full w-48 h-48 mx-auto border-4 border-white shadow overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80" 
-                alt="Profile"
+                src={profile.profileImage || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"} 
+                alt={`${profile.name} profile`}
                 className="w-full h-full object-cover"
               />
             </div>

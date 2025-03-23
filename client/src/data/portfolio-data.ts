@@ -9,12 +9,13 @@ export const portfolioData: PortfolioData = {
     email: "contactdineshmoorthy@gmail.com",
     website: "portfolio link",
     phone: "+44-7553688946",
+    profileImage: "/images/profile.png",
     resumeLink: "/resume.pdf",
     socialLinks: {
-      github: "https://github.com/dineshmoorthy",
+      github: "https://github.com/sponsors/dineshmoorthy/",
       linkedin: "https://linkedin.com/in/dinesh-dakshinamoorthy87",
-      twitter: "https://twitter.com",
-      medium: "https://medium.com"
+      twitter: "https://x.com/dineshmoorthy87",
+      medium: ""
     }
   },
   experiences: [
