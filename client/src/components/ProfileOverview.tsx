@@ -39,45 +39,52 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
                 <span>{profile.website}</span>
               </div>
             </div>
-            <div className="mt-6 flex gap-4">
-              <a 
-                href={profile.socialLinks.github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="GitHub Profile" 
-                className="text-gray-600 hover:text-primary transition-colors"
-              >
-                <i className="fab fa-github text-2xl"></i>
-              </a>
-              <a 
-                href={profile.socialLinks.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile" 
-                className="text-gray-600 hover:text-primary transition-colors"
-              >
-                <i className="fab fa-linkedin text-2xl"></i>
-              </a>
-              <a 
-                href={profile.socialLinks.twitter} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Twitter Profile" 
-                className="text-gray-600 hover:text-primary transition-colors"
-              >
-                <i className="fab fa-twitter text-2xl"></i>
-              </a>
-              {profile.socialLinks.medium && (
+            <div className="mt-6">
+              <h3 className="text-lg font-medium mb-3 text-gray-700">Connect with me</h3>
+              <div className="flex flex-wrap gap-4">
                 <a 
-                  href={profile.socialLinks.medium} 
+                  href={profile.socialLinks.github} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  aria-label="Medium Profile" 
-                  className="text-gray-600 hover:text-primary transition-colors"
+                  aria-label="GitHub Profile" 
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
                 >
-                  <i className="fab fa-medium text-2xl"></i>
+                  <i className="fab fa-github text-xl"></i>
+                  <span>GitHub</span>
                 </a>
-              )}
+                <a 
+                  href={profile.socialLinks.twitter} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Twitter Profile" 
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                >
+                  <i className="fab fa-twitter text-xl text-[#1DA1F2]"></i>
+                  <span>Twitter</span>
+                </a>
+                <a 
+                  href={profile.socialLinks.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile" 
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                >
+                  <i className="fab fa-linkedin text-xl text-[#0077B5]"></i>
+                  <span>LinkedIn</span>
+                </a>
+                {profile.socialLinks.medium && (
+                  <a 
+                    href={profile.socialLinks.medium} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Medium Profile" 
+                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                  >
+                    <i className="fab fa-medium text-xl"></i>
+                    <span>Medium</span>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </CardContent>

@@ -244,5 +244,43 @@ export const portfolioData: PortfolioData = {
       demoLink: "#",
       sourceLink: "#"
     }
+  ],
+  futureProjects: [
+    {
+      id: 1,
+      title: "AI-powered Content Generator",
+      description: "A machine learning tool that generates high-quality blog posts, social media content, and marketing copy based on simple prompts.",
+      plannedDate: "Q2 2025",
+      type: "Web Application",
+      skills: ["Machine Learning", "NLP", "React", "Node.js", "GPT-4"],
+      githubLink: "https://github.com/johndoe/content-generator"
+    },
+    {
+      id: 2,
+      title: "Blockchain Portfolio Tracker",
+      description: "A comprehensive dashboard for tracking cryptocurrency investments, NFTs, and DeFi positions across multiple blockchains.",
+      plannedDate: "Q3 2025",
+      type: "Web3 Application",
+      skills: ["Ethereum", "Solana", "React", "Web3.js", "TypeScript"],
+      githubLink: "https://github.com/johndoe/crypto-portfolio"
+    },
+    {
+      id: 3,
+      title: "Augmented Reality Fitness Coach",
+      description: "An AR application that provides real-time form correction and personalized workout plans using computer vision.",
+      plannedDate: "Q4 2025",
+      type: "Mobile Application",
+      skills: ["ARKit", "CoreML", "Swift", "Computer Vision", "TensorFlow"],
+      githubLink: "https://github.com/johndoe/ar-fitness"
+    },
+    {
+      id: 4,
+      title: "Sustainable Smart Home System",
+      description: "An IoT ecosystem that optimizes energy usage, reduces waste, and promotes sustainable living through smart devices and AI.",
+      plannedDate: "Q1 2026",
+      type: "IoT System",
+      skills: ["IoT", "Embedded Systems", "Machine Learning", "Cloud Architecture"],
+      githubLink: "https://github.com/johndoe/eco-smart-home"
+    }
   ]
 };

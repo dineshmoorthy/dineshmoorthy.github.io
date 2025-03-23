@@ -58,6 +58,16 @@ export interface Project {
   sourceLink: string;
 }
 
+export interface FutureProject {
+  id: number;
+  title: string;
+  description: string;
+  plannedDate: string;
+  type: string;
+  skills: string[];
+  githubLink?: string;
+}
+
 export interface ProfileInfo {
   name: string;
   title: string;
@@ -83,4 +93,5 @@ export interface PortfolioData {
   education: Education[];
   achievements: Achievement[];
   projects: Project[];
+  futureProjects: FutureProject[];
 }
