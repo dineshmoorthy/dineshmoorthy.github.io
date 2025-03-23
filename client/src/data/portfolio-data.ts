@@ -248,101 +248,101 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-featured online shopping platform with real-time inventory, payment processing, and order management.",
-      type: "Web App",
+      title: "Microservices Migration Project",
+      description: "Led the migration of monolithic applications to microservices architecture, improving scalability and reducing deployment time.",
+      type: "Enterprise Application",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["React", "Node.js", "MongoDB", "Stripe"],
+      skills: ["Java", "Spring Boot", "Microservices", "Docker", "Kafka"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/microservices-demo"
     },
     {
       id: 2,
-      title: "Task Manager",
-      description: "A productivity app that helps users organize tasks, set reminders, and track their progress on projects.",
-      type: "Mobile App",
+      title: "Real-time Banking Transaction System",
+      description: "Developed a Kafka-based message-driven system for instant balance updates, replacing legacy batch-based overnight processing.",
+      type: "Financial System",
       image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["React Native", "Firebase", "Redux"],
+      skills: ["Java 17", "Spring Boot", "Kafka", "Oracle", "Event-driven Architecture"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/banking-system"
     },
     {
       id: 3,
-      title: "Analytics Dashboard",
-      description: "A real-time analytics platform that visualizes complex data sets for business intelligence.",
-      type: "Dashboard",
+      title: "Serverless API Platform",
+      description: "Built a high-throughput API using AWS Lambda and API Gateway that handles over 1 million requests per hour during peak load times.",
+      type: "Cloud Architecture",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["Vue.js", "D3.js", "Node.js", "PostgreSQL"],
+      skills: ["AWS Lambda", "API Gateway", "DynamoDB", "Serverless", "Java"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/serverless-api"
     },
     {
       id: 4,
-      title: "Sentiment Analyzer",
-      description: "An NLP-powered tool that analyzes customer feedback and social media mentions to gauge brand sentiment.",
-      type: "AI Tool",
+      title: "Automated CI/CD Pipeline",
+      description: "Implemented an advanced CI/CD pipeline using Harness to automate build, test, and deployment processes, reducing deployment time by 35%.",
+      type: "DevOps",
       image: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["Python", "TensorFlow", "React", "FastAPI"],
+      skills: ["Harness", "CI/CD", "Docker", "Jenkins", "DevOps"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/cicd-pipeline"
     },
     {
       id: 5,
-      title: "Smart Home Hub",
-      description: "A central control system for smart home devices with voice commands and automation rules.",
-      type: "IoT System",
+      title: "Java Version Migration Framework",
+      description: "Developed a framework and methodology for migrating legacy Java 8 applications to Java 17, including automated compatibility checking tools.",
+      type: "Framework",
       image: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["Raspberry Pi", "MQTT", "React", "Node.js"],
+      skills: ["Java 8", "Java 17", "Spring Boot", "JUnit", "Migration"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/java-migration"
     },
     {
       id: 6,
-      title: "Productivity Booster",
-      description: "A browser extension that blocks distracting websites and provides focus tools for improved productivity.",
-      type: "Browser Extension",
+      title: "Banking Application for ING Australia",
+      description: "Contributed to the development of secure banking features for ING Bank Australia, focusing on transaction processing and security.",
+      type: "Financial Application",
       image: "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
-      skills: ["JavaScript", "Chrome API", "Firebase"],
+      skills: ["Java", "Spring Framework", "Security", "Oracle", "REST APIs"],
       demoLink: "#",
-      sourceLink: "#"
+      sourceLink: "https://github.com/dineshmoorthy/banking-app"
     }
   ],
   futureProjects: [
     {
       id: 1,
-      title: "AI-powered Content Generator",
-      description: "A machine learning tool that generates high-quality blog posts, social media content, and marketing copy based on simple prompts.",
-      plannedDate: "Q2 2025",
-      type: "Web Application",
-      skills: ["Machine Learning", "NLP", "React", "Node.js", "GPT-4"],
-      githubLink: "https://github.com/johndoe/content-generator"
+      title: "AI-Enhanced Predictive Maintenance System",
+      description: "Planning to develop a machine learning-based system that predicts equipment failures before they occur, using historical maintenance data and real-time sensor inputs.",
+      plannedDate: "Q3 2025",
+      type: "Enterprise Solution",
+      skills: ["Machine Learning", "Java", "Spring Boot", "Kafka", "Time Series Analysis"],
+      githubLink: "https://github.com/dineshmoorthy/predictive-maintenance"
     },
     {
       id: 2,
-      title: "Blockchain Portfolio Tracker",
-      description: "A comprehensive dashboard for tracking cryptocurrency investments, NFTs, and DeFi positions across multiple blockchains.",
-      plannedDate: "Q3 2025",
-      type: "Web3 Application",
-      skills: ["Ethereum", "Solana", "React", "Web3.js", "TypeScript"],
-      githubLink: "https://github.com/johndoe/crypto-portfolio"
+      title: "Advanced Cloud Migration Framework",
+      description: "Working on a comprehensive framework to automate the migration of legacy applications to cloud-native architectures, with particular focus on financial services requirements.",
+      plannedDate: "Q4 2025",
+      type: "Cloud Framework",
+      skills: ["AWS", "Azure", "Java", "Docker", "Kubernetes", "Terraform"],
+      githubLink: "https://github.com/dineshmoorthy/cloud-migration"
     },
     {
       id: 3,
-      title: "Augmented Reality Fitness Coach",
-      description: "An AR application that provides real-time form correction and personalized workout plans using computer vision.",
-      plannedDate: "Q4 2025",
-      type: "Mobile Application",
-      skills: ["ARKit", "CoreML", "Swift", "Computer Vision", "TensorFlow"],
-      githubLink: "https://github.com/johndoe/ar-fitness"
+      title: "Blockchain-Based Identity Verification",
+      description: "Planning a secure identity verification system using blockchain technology to provide immutable records while maintaining privacy and compliance with regulations.",
+      plannedDate: "Q1 2026",
+      type: "Security Application",
+      skills: ["Blockchain", "Java", "Security", "Cryptography", "Smart Contracts"],
+      githubLink: "https://github.com/dineshmoorthy/blockchain-identity"
     },
     {
       id: 4,
-      title: "Sustainable Smart Home System",
-      description: "An IoT ecosystem that optimizes energy usage, reduces waste, and promotes sustainable living through smart devices and AI.",
-      plannedDate: "Q1 2026",
-      type: "IoT System",
-      skills: ["IoT", "Embedded Systems", "Machine Learning", "Cloud Architecture"],
-      githubLink: "https://github.com/johndoe/eco-smart-home"
+      title: "Advanced Continuous Delivery Platform",
+      description: "Designing a next-generation continuous delivery platform that integrates AI for testing optimization, deployment risk assessment, and automated rollback decisions.",
+      plannedDate: "Q2 2026",
+      type: "DevOps Platform",
+      skills: ["DevOps", "CI/CD", "Machine Learning", "Java", "Kubernetes"],
+      githubLink: "https://github.com/dineshmoorthy/ai-devops"
     }
   ]
 };
