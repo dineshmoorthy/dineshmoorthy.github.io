@@ -130,8 +130,6 @@ const Home: React.FC = () => {
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
         </section>
         
-        <div id="contact" className="pt-12 -mt-12"></div> {/* Anchor point */}
-        <Contact profile={portfolioData.profile} />
         <Footer />
       </div>
     </div>

@@ -5,6 +5,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import ContactModal from "@/components/ContactModal";
+import { portfolioData } from "@/data/portfolio-data";
 
 // Create a simple hash-based routing hook for GitHub Pages
 const useHashLocation = () => {
@@ -70,6 +72,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="app-container">
         <Router />
+        <ContactModal profile={portfolioData.profile} />
         <Toaster />
       </div>
     </QueryClientProvider>

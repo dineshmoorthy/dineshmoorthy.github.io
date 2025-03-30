@@ -103,10 +103,19 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
-                  <a href="#contact" className="flex items-center w-full py-1">
+                  <button 
+                    onClick={() => {
+                      // Show the Contact form in a modal or dropdown
+                      const modal = document.getElementById('contact-modal');
+                      if (modal) {
+                        modal.classList.remove('hidden');
+                      }
+                    }} 
+                    className="flex items-center w-full py-1"
+                  >
                     <i className="fas fa-envelope mr-2 text-fuchsia-400"></i>
-                    <span>Contact</span>
-                  </a>
+                    <span>Send a message</span>
+                  </button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -167,47 +176,25 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
               <i className="fas fa-file-alt mr-2"></i>
               Resume
             </a>
-            <a 
-              href="#contact" 
+            <button 
               className="text-xl font-medium text-white hover:text-fuchsia-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                // Show the Contact form in a modal
+                const modal = document.getElementById('contact-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
             >
               <i className="fas fa-envelope mr-2"></i>
-              Contact
-            </a>
+              Send a message
+            </button>
             
             <div className="mt-4">
               <ThemeToggle />
             </div>
           </nav>
-          
-          {/* Social Links */}
-          <div className="flex space-x-6 mt-8">
-            <a 
-              href={profile.socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-400 hover:text-white transition-colors"
-            >
-              <i className="fab fa-github"></i>
-            </a>
-            <a 
-              href={profile.socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-400 hover:text-white transition-colors"
-            >
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a 
-              href={profile.socialLinks.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-2xl text-gray-400 hover:text-white transition-colors"
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-          </div>
         </div>
         
         {/* Decorative elements */}
