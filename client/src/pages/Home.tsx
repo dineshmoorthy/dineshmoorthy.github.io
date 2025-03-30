@@ -55,15 +55,15 @@ const Home: React.FC = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-black text-gray-100 flex flex-col">
+    <div className="min-h-screen bg-black dark:bg-gray-950 text-gray-100 flex flex-col theme-transition">
       {/* Loading overlay */}
-      <div className={`fixed inset-0 z-50 bg-black flex flex-col items-center justify-center transition-opacity duration-1000 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      <div className={`fixed inset-0 z-50 bg-black dark:bg-gray-950 flex flex-col items-center justify-center transition-opacity duration-1000 theme-transition ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <div className="relative">
-          <div className="h-1 w-52 bg-gray-800 rounded-full overflow-hidden mb-4">
+          <div className="h-1 w-52 bg-gray-800 dark:bg-gray-700 rounded-full overflow-hidden mb-4">
             <div className="h-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full animate-scan" style={{width: '100%'}}></div>
           </div>
           <div className="font-mono text-center">
-            <div className="text-sm text-gray-500 mb-1">INITIALIZING SYSTEM</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">INITIALIZING SYSTEM</div>
             <div className="text-lg bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent font-bold">PORTFOLIO.SYS</div>
           </div>
         </div>
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
         
         <section className="container mx-auto px-4 pb-16 relative">
           {/* Content background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black dark:from-gray-950 dark:via-gray-900/30 dark:to-gray-950 theme-transition"></div>
           
           {/* Tab content with cyberpunk styles */}
           <div className="relative z-10">

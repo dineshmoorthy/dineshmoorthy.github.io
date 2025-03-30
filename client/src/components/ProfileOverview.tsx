@@ -148,42 +148,13 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
             <div className="mb-8 text-gray-300 backdrop-blur-sm bg-black/20 p-6 border border-gray-800 rounded-lg shadow-inner">
               <div className="flex items-center mb-4">
                 <div className="h-px flex-grow bg-gradient-to-r from-transparent to-cyan-500 opacity-50"></div>
-                <span className="px-4 text-cyan-400 font-mono uppercase text-sm tracking-widest">Bio.sys</span>
+                <span className="px-4 text-cyan-400 font-mono uppercase text-sm tracking-widest">Profile Overview</span>
                 <div className="h-px flex-grow bg-gradient-to-l from-transparent to-fuchsia-500 opacity-50"></div>
               </div>
               
-              <p className="leading-relaxed text-lg mb-4">
+              <p className="leading-relaxed text-lg">
                 {profile.about}
               </p>
-              
-              {/* Location and contact info */}
-              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-400">
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-map-marker-alt text-cyan-400"></i>
-                  <span>{profile.location}</span>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-envelope text-fuchsia-400"></i>
-                  <a href={`mailto:${profile.email}`} className="hover:text-white transition-colors">
-                    {profile.email}
-                  </a>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-globe text-cyan-400"></i>
-                  <a href={profile.website} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    {profile.website.replace('https://', '')}
-                  </a>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <i className="fas fa-phone text-fuchsia-400"></i>
-                  <a href={`tel:${profile.phone}`} className="hover:text-white transition-colors">
-                    {profile.phone}
-                  </a>
-                </div>
-              </div>
             </div>
             
             {/* CTA buttons and social links */}

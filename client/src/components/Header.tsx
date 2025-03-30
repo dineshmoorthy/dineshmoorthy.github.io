@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ProfileInfo } from "@shared/types";
+import ThemeToggle from "./ThemeToggle";
 
 interface HeaderProps {
   profile: ProfileInfo;
@@ -28,12 +29,12 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
   }, []);
   
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${scrolled ? 'bg-black/80 py-3' : 'bg-transparent py-5'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md theme-transition ${scrolled ? 'bg-black/80 dark:bg-gray-900/80 py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center relative">
         {/* Cyberpunk Logo */}
         <div className="relative">
           <div className={`absolute -inset-1 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-lg opacity-70 blur transition-opacity ${scrolled ? 'opacity-75' : 'opacity-40'}`}></div>
-          <a href="#" className="relative block px-3 py-2 bg-black rounded-lg">
+          <a href="#" className="relative block px-3 py-2 bg-black dark:bg-gray-900 rounded-lg">
             <h1 className="text-xl md:text-2xl font-mono font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent tracking-tight">
               <span className="inline-block transform hover:scale-105 transition-transform">D.MOORTHY</span>
             </h1>
@@ -64,21 +65,12 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <a 
-              href="#contact"
-              className="relative group"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded opacity-70 blur group-hover:opacity-100 transition duration-300"></div>
-              <Button className="relative bg-black hover:bg-gray-900 text-white border border-gray-800 group-hover:border-transparent px-4 py-2 text-sm rounded-md">
-                <i className="fas fa-envelope mr-2 text-fuchsia-400"></i>
-                Contact
-              </Button>
-            </a>
+            <ThemeToggle />
           </div>
         </nav>
         
         {/* Mobile Menu */}
-        <div className={`fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col justify-center items-center space-y-8 z-50 transition-all duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-black/95 dark:bg-gray-900/95 backdrop-blur-md flex flex-col justify-center items-center space-y-8 z-50 transition-all duration-500 theme-transition ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <nav className="flex flex-col items-center space-y-8">
             <a 
               href="#experience" 
@@ -115,13 +107,9 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
             >
               Resume
             </a>
-            <a 
-              href="#contact" 
-              className="mt-4 px-6 py-3 bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white rounded-full text-lg font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact Me
-            </a>
+            <div className="mt-4">
+              <ThemeToggle />
+            </div>
           </nav>
           
           {/* Social Links */}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Route, Switch, useLocation } from "wouter";
+import { Route, Switch } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -41,10 +41,37 @@ const Router = () => {
 };
 
 function App() {
+  // Add theme transition class to body when component mounts
+  useEffect(() => {
+    document.body.classList.add('theme-transition');
+    
+    // Function to remove transition class after user interaction
+    const handleUserInteraction = () => {
+      document.body.classList.add('theme-transition');
+      
+      // Remove class after transitions have likely completed
+      setTimeout(() => {
+        document.body.classList.remove('theme-transition');
+      }, 500);
+    };
+    
+    // Add event listeners for user interactions
+    window.addEventListener('mousedown', handleUserInteraction);
+    window.addEventListener('touchstart', handleUserInteraction);
+    
+    return () => {
+      window.removeEventListener('mousedown', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+      document.body.classList.remove('theme-transition');
+    };
+  }, []);
+  
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
-      <Toaster />
+      <div className="app-container">
+        <Router />
+        <Toaster />
+      </div>
     </QueryClientProvider>
   );
 }
