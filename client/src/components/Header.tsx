@@ -61,7 +61,9 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
             <a href="#skills" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Skills</a>
             <a href="#education" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Education</a>
             <a href="#projects" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Projects</a>
-            <a href="#resume" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Resume</a>
+            <a href="#futureprojects" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Future Projects</a>
+            <a href="#resume" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Resume</a>
+            <a href="#contact" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Contact</a>
           </div>
           
           <div className="flex items-center space-x-4">
@@ -101,11 +103,25 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
               Projects
             </a>
             <a 
-              href="#resume" 
+              href="#futureprojects" 
               className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
+              Future Projects
+            </a>
+            <a 
+              href="#resume" 
+              className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Resume
+            </a>
+            <a 
+              href="#contact" 
+              className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
             </a>
             <div className="mt-4">
               <ThemeToggle />

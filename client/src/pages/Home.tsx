@@ -30,19 +30,33 @@ const Home: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash) {
-        const tabId = hash.substring(1);
-        const validTabs = ["experience", "skills", "education", "achievements", "projects", "futureProjects", "resume", "contact"];
+        let tabId = hash.substring(1);
         
-        if (validTabs.includes(tabId)) {
-          setActiveTab(tabId);
-          
-          setTimeout(() => {
-            const element = document.getElementById(tabId);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }, 100);
+        // Map URL hash to corresponding tab ID
+        const tabMapping: Record<string, string> = {
+          "experience": "experience",
+          "skills": "skills",
+          "education": "education",
+          "achievements": "achievements",
+          "projects": "projects",
+          "futureprojects": "futureProjects",
+          "resume": "resume",
+          "contact": "contact"
+        };
+        
+        if (tabId === "futureprojects") {
+          setActiveTab("futureProjects");
+          tabId = "futureprojects"; // Keep the ID for scrolling
+        } else if (tabMapping[tabId]) {
+          setActiveTab(tabMapping[tabId]);
         }
+        
+        setTimeout(() => {
+          const element = document.getElementById(tabId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
       }
     };
     
@@ -84,7 +98,14 @@ const Home: React.FC = () => {
         
         <ProfileOverview profile={portfolioData.profile} />
         
-        <div id="experience" className="pt-12 -mt-12"></div> {/* Anchor point */}
+        {/* Anchor points for each section */}
+        <div id="experience" className="pt-12 -mt-12"></div>
+        <div id="skills" className="pt-12 -mt-12"></div> 
+        <div id="education" className="pt-12 -mt-12"></div>
+        <div id="projects" className="pt-12 -mt-12"></div>
+        <div id="futureprojects" className="pt-12 -mt-12"></div>
+        <div id="resume" className="pt-12 -mt-12"></div>
+        
         <TabNavigation 
           activeTab={activeTab} 
           onTabChange={setActiveTab} 
