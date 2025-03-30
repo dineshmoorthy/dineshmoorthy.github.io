@@ -8,6 +8,7 @@ import Education from "@/components/tabs/Education";
 import Achievements from "@/components/tabs/Achievements";
 import Projects from "@/components/tabs/Projects";
 import FutureProjects from "@/components/tabs/FutureProjects";
+import Resume from "@/components/tabs/Resume";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { portfolioData } from "@/data/portfolio-data";
@@ -32,6 +33,7 @@ const Home: React.FC = () => {
         {activeTab === "achievements" && <Achievements achievements={portfolioData.achievements} />}
         {activeTab === "projects" && <Projects projects={portfolioData.projects} />}
         {activeTab === "futureProjects" && <FutureProjects futureProjects={portfolioData.futureProjects} />}
+        {activeTab === "resume" && <Resume profile={portfolioData.profile} />}
       </section>
       
       <Contact profile={portfolioData.profile} />

@@ -13,6 +13,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabChange })
     { id: "achievements", label: "Achievements" },
     { id: "projects", label: "Projects" },
     { id: "futureProjects", label: "Future Projects" },
+    { id: "resume", label: "Resume" },
   ];
 
   return (
