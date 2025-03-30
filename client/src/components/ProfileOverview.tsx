@@ -1,87 +1,146 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProfileInfo } from "@shared/types";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface ProfileOverviewProps {
   profile: ProfileInfo;
 }
 
 const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <section className="container mx-auto px-4 py-12">
-      <Card className="mb-8">
-        <CardContent className="p-6 md:p-8 flex flex-col md:flex-row gap-8">
-          <div className="md:w-1/4">
-            <div className="rounded-full w-48 h-48 mx-auto border-4 border-white shadow overflow-hidden">
-              <img 
-                src={profile.profileImage || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80"} 
-                alt={`${profile.name} profile`}
-                className="w-full h-full object-cover"
-              />
+      <Card className={`mb-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 shadow-lg transition-all duration-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <CardContent className="p-8 md:p-10 flex flex-col md:flex-row gap-8">
+          <div className="md:w-1/4 flex flex-col items-center">
+            <div className="relative w-56 h-56 mx-auto">
+              {/* Main profile image with animation and glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 animate-pulse opacity-20 blur-xl"></div>
+              <div className="rounded-full w-56 h-56 mx-auto border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden z-10 relative hover:scale-105 transition-transform duration-300 ease-in-out">
+                <img 
+                  src={profile.profileImage || "/images/profile.png"} 
+                  alt={`${profile.name} profile`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Decorative tech-themed element */}
+              <div className="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white z-20 shadow-lg border-2 border-white">
+                <i className="fas fa-laptop-code text-2xl"></i>
+              </div>
             </div>
+            
+            <a 
+              href={profile.resumeLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="mt-4 inline-block"
+            >
+              <Button variant="default" className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md px-6 py-2 rounded-full flex items-center gap-2 transition-all duration-300 hover:shadow-lg">
+                <i className="fas fa-download"></i>
+                <span>Download CV</span>
+                <span className="hidden group-hover:inline-block transition-all duration-300">→</span>
+              </Button>
+            </a>
           </div>
+          
           <div className="md:w-3/4">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">About Me</h2>
-            <p className="text-gray-700 mb-6">
+            <div className="mb-6 flex items-center">
+              <div className="w-2 h-8 bg-blue-600 rounded-full mr-4"></div>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">About Me</h2>
+            </div>
+            
+            <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed">
               {profile.about}
             </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center text-gray-600">
-                <i className="fas fa-map-marker-alt mr-2 text-primary"></i>
-                <span>{profile.location}</span>
+            
+            <div className="flex flex-wrap gap-6 mb-6">
+              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                  <i className="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Location</div>
+                  <span className="font-medium">{profile.location}</span>
+                </div>
               </div>
-              <div className="flex items-center text-gray-600">
-                <i className="fas fa-envelope mr-2 text-primary"></i>
-                <span>{profile.email}</span>
+              
+              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                  <i className="fas fa-envelope text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Email</div>
+                  <span className="font-medium">{profile.email}</span>
+                </div>
               </div>
-              <div className="flex items-center text-gray-600">
-                <i className="fas fa-globe mr-2 text-primary"></i>
-                <span>{profile.website}</span>
+              
+              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
+                  <i className="fas fa-globe text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Website</div>
+                  <span className="font-medium">{profile.website}</span>
+                </div>
               </div>
             </div>
-            <div className="mt-6">
-              <h3 className="text-lg font-medium mb-3 text-gray-700">Connect with me</h3>
+            
+            <div className="mt-8">
+              <div className="mb-5 flex items-center">
+                <div className="w-2 h-6 bg-blue-600 rounded-full mr-4"></div>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">Connect with me</h3>
+              </div>
+              
               <div className="flex flex-wrap gap-4">
                 <a 
                   href={profile.socialLinks.github} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile" 
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                  className="group flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
                 >
-                  <i className="fab fa-github text-xl"></i>
-                  <span>GitHub</span>
+                  <i className="fab fa-github text-2xl group-hover:scale-110 transition-transform duration-300"></i>
+                  <span className="font-medium">GitHub</span>
                 </a>
+                
                 <a 
                   href={profile.socialLinks.twitter} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="Twitter Profile" 
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                  className="group flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
                 >
-                  <i className="fab fa-twitter text-xl text-[#1DA1F2]"></i>
-                  <span>Twitter</span>
+                  <i className="fab fa-twitter text-2xl text-[#1DA1F2] group-hover:scale-110 transition-transform duration-300"></i>
+                  <span className="font-medium">Twitter</span>
                 </a>
+                
                 <a 
                   href={profile.socialLinks.linkedin} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile" 
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                  className="group flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
                 >
-                  <i className="fab fa-linkedin text-xl text-[#0077B5]"></i>
-                  <span>LinkedIn</span>
+                  <i className="fab fa-linkedin text-2xl text-[#0077B5] group-hover:scale-110 transition-transform duration-300"></i>
+                  <span className="font-medium">LinkedIn</span>
                 </a>
+                
                 {profile.socialLinks.medium && (
                   <a 
                     href={profile.socialLinks.medium} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="Medium Profile" 
-                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-2 rounded-lg transition-colors"
+                    className="group flex items-center gap-2 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
                   >
-                    <i className="fab fa-medium text-xl"></i>
-                    <span>Medium</span>
+                    <i className="fab fa-medium text-2xl group-hover:scale-110 transition-transform duration-300"></i>
+                    <span className="font-medium">Medium</span>
                   </a>
                 )}
               </div>
