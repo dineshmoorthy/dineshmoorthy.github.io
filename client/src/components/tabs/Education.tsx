@@ -12,6 +12,12 @@ interface EducationProps {
 const getInstitutionLogo = (institutionName: string): string | undefined => {
   const name = institutionName.toLowerCase();
   
+  // Custom provided logos - use these first
+  if (name.includes('anna') || name.includes('university')) return '/images/institutions/anna-university-chennai.jpg';
+  if (name.includes('ielts')) return '/images/institutions/ielts.jpg';
+  if (name.includes('oracle')) return '/images/institutions/Logo_oracle.jpg';
+  if (name.includes('azure') || (name.includes('microsoft') && name.includes('certified'))) return '/images/institutions/azure.png';
+  
   // Map popular institutions to their logos
   if (name.includes('stanford')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Stanford_Cardinal_logo.svg/1200px-Stanford_Cardinal_logo.svg.png';
   if (name.includes('mit') || name.includes('massachusetts institute')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/2560px-MIT_logo.svg.png';
@@ -26,7 +32,6 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   if (name.includes('iit')) return 'https://upload.wikimedia.org/wikipedia/en/thumb/6/69/IIT_Madras_Logo.svg/1200px-IIT_Madras_Logo.svg.png';
   if (name.includes('nit')) return 'https://upload.wikimedia.org/wikipedia/en/f/fd/National_Institute_of_Technology%2C_Tiruchirappalli_Logo.png';
   if (name.includes('bits')) return 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png';
-  if (name.includes('anna') || name.includes('university')) return 'https://upload.wikimedia.org/wikipedia/en/4/49/Anna_University_Logo.svg';
   
   // Certificate providers
   if (name.includes('udemy')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png';
@@ -34,10 +39,9 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   if (name.includes('edx')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/EdX.svg/1200px-EdX.svg.png';
   if (name.includes('linkedin learning') || name.includes('lynda')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/LinkedIn_Learning_logo.svg/2560px-LinkedIn_Learning_logo.svg.png';
   if (name.includes('google')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png';
-  if (name.includes('microsoft')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png';
+  if (name.includes('microsoft') && !name.includes('azure')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png';
   if (name.includes('aws') || name.includes('amazon')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png';
   if (name.includes('ibm')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png';
-  if (name.includes('oracle')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/2560px-Oracle_logo.svg.png';
   if (name.includes('spring') || name.includes('vmware')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1200px-Spring_Framework_Logo_2018.svg.png';
   
   // If no specific logo found, return undefined
@@ -58,8 +62,8 @@ const getEducationImage = (item: EducationType): string | undefined => {
     institution.includes('institute')
   ) {
     // If it's a specific famous institution, use its image
-    if (institution.includes('anna')) {
-      return 'https://www.collegebatch.com/static/clg-gallery/anna-university-chennai-220234.jpg';
+    if (institution.includes('anna') || institution.includes('university')) {
+      return '/images/institutions/anna-university-chennai.jpg';
     }
     
     if (institution.includes('iit')) {

@@ -69,6 +69,44 @@
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
@@ -88,6 +126,18 @@
   
   .animate-pulse-glow {
     animation: pulseGlow 2s infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+  
+  .animate-scan {
+    animation: scan 3s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
   }
   
   .stagger-1 {
