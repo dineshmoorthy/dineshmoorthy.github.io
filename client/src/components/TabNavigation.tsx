@@ -12,8 +12,6 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabChange })
     { id: "education", label: "Education", icon: "fas fa-graduation-cap", color: "cyan" },
     { id: "achievements", label: "Achievements", icon: "fas fa-trophy", color: "fuchsia" },
     { id: "projects", label: "Projects", icon: "fas fa-project-diagram", color: "cyan" },
-    { id: "futureProjects", label: "Future Projects", icon: "fas fa-rocket", color: "fuchsia" },
-    { id: "resume", label: "Resume", icon: "fas fa-file-alt", color: "cyan" },
   ];
 
   return (

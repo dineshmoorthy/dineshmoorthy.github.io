@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ProfileInfo } from "@shared/types";
 import ThemeToggle from "./ThemeToggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   profile: ProfileInfo;
@@ -61,12 +67,50 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
             <a href="#skills" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Skills</a>
             <a href="#education" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Education</a>
             <a href="#projects" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Projects</a>
-            <a href="#futureprojects" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Future Projects</a>
-            <a href="#resume" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Resume</a>
-            <a href="#contact" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Contact</a>
           </div>
           
           <div className="flex items-center space-x-4">
+            {/* More sections dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="relative w-9 h-9 rounded-lg bg-transparent border border-white/20 hover:bg-white/10 transition-colors"
+                >
+                  <div className="flex flex-col items-center justify-center space-y-1">
+                    <div className="w-1 h-1 rounded-full bg-cyan-400"></div>
+                    <div className="w-1 h-1 rounded-full bg-fuchsia-400"></div>
+                    <div className="w-1 h-1 rounded-full bg-cyan-400"></div>
+                  </div>
+                  <span className="sr-only">More sections</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="end" 
+                className="w-48 bg-black/90 backdrop-blur-md border border-white/10 text-white p-2"
+              >
+                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
+                  <a href="#futureprojects" className="flex items-center w-full py-1">
+                    <i className="fas fa-rocket mr-2 text-fuchsia-400"></i>
+                    <span>Future Projects</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
+                  <a href="#resume" className="flex items-center w-full py-1">
+                    <i className="fas fa-file-alt mr-2 text-cyan-400"></i>
+                    <span>Resume</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
+                  <a href="#contact" className="flex items-center w-full py-1">
+                    <i className="fas fa-envelope mr-2 text-fuchsia-400"></i>
+                    <span>Contact</span>
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <ThemeToggle />
           </div>
         </nav>
@@ -102,27 +146,36 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
             >
               Projects
             </a>
+            
+            {/* Divider line */}
+            <div className="w-16 h-px bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-50"></div>
+            
+            {/* More sections - directly in mobile menu but visually separated */}
             <a 
               href="#futureprojects" 
-              className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
+              className="text-xl font-medium text-white hover:text-fuchsia-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
+              <i className="fas fa-rocket mr-2"></i>
               Future Projects
             </a>
             <a 
               href="#resume" 
-              className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
+              className="text-xl font-medium text-white hover:text-cyan-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
+              <i className="fas fa-file-alt mr-2"></i>
               Resume
             </a>
             <a 
               href="#contact" 
-              className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
+              className="text-xl font-medium text-white hover:text-fuchsia-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
+              <i className="fas fa-envelope mr-2"></i>
               Contact
             </a>
+            
             <div className="mt-4">
               <ThemeToggle />
             </div>
