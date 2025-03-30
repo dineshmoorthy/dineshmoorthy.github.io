@@ -23,6 +23,10 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   if (name.includes('princeton')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Princeton_University_shield.svg/1200px-Princeton_University_shield.svg.png';
   if (name.includes('yale')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Yale_University_logo.svg/1200px-Yale_University_logo.svg.png';
   if (name.includes('columbia')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Columbia_University_shield.svg/1200px-Columbia_University_shield.svg.png';
+  if (name.includes('iit')) return 'https://upload.wikimedia.org/wikipedia/en/thumb/6/69/IIT_Madras_Logo.svg/1200px-IIT_Madras_Logo.svg.png';
+  if (name.includes('nit')) return 'https://upload.wikimedia.org/wikipedia/en/f/fd/National_Institute_of_Technology%2C_Tiruchirappalli_Logo.png';
+  if (name.includes('bits')) return 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/1200px-BITS_Pilani-Logo.svg.png';
+  if (name.includes('anna') || name.includes('university')) return 'https://upload.wikimedia.org/wikipedia/en/4/49/Anna_University_Logo.svg';
   
   // Certificate providers
   if (name.includes('udemy')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png';
@@ -34,9 +38,70 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   if (name.includes('aws') || name.includes('amazon')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png';
   if (name.includes('ibm')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png';
   if (name.includes('oracle')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/2560px-Oracle_logo.svg.png';
+  if (name.includes('spring') || name.includes('vmware')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/1200px-Spring_Framework_Logo_2018.svg.png';
   
   // If no specific logo found, return undefined
   return undefined;
+};
+
+// Get a realistic image for institution or certification type
+const getEducationImage = (item: EducationType): string | undefined => {
+  const institution = item.institution.toLowerCase();
+  const degree = item.degree.toLowerCase();
+  const field = item.field.toLowerCase();
+  
+  // Universities and college campus images
+  if (
+    institution.includes('university') || 
+    institution.includes('college') || 
+    institution.includes('school') ||
+    institution.includes('institute')
+  ) {
+    // If it's a specific famous institution, use its image
+    if (institution.includes('anna')) {
+      return 'https://www.collegebatch.com/static/clg-gallery/anna-university-chennai-220234.jpg';
+    }
+    
+    if (institution.includes('iit')) {
+      return 'https://www.shiksha.com/online-courses/articles/wp-content/uploads/sites/11/2022/02/IIT-Delhi.jpg';
+    }
+    
+    if (institution.includes('nit')) {
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/National_Institute_of_Technology%2C_Tiruchirappalli_-_Central_Library.jpg/1200px-National_Institute_of_Technology%2C_Tiruchirappalli_-_Central_Library.jpg';
+    }
+    
+    // Generic university campus image
+    return 'https://www.timeshighereducation.com/sites/default/files/styles/the_breaking_news_image_style/public/university-of-calicut-distance-education.jpg';
+  }
+  
+  // Certificate or training images based on field
+  if (degree.includes('certification') || degree.includes('certificate') || degree.includes('course')) {
+    if (field.includes('java') || field.includes('spring')) {
+      return 'https://images.idgesg.net/images/article/2019/05/java_binary_code_gears_programming_coding_development_by_bluebay2014_gettyimages-1040871468_2400x1600-100795798-large.jpg';
+    }
+    
+    if (field.includes('aws') || field.includes('cloud')) {
+      return 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80';
+    }
+    
+    if (field.includes('devops') || field.includes('kubernetes') || field.includes('docker')) {
+      return 'https://www.opsmx.com/wp-content/uploads/2022/07/What-is-DevOps-opsmax.jpeg';
+    }
+    
+    if (field.includes('database') || field.includes('sql')) {
+      return 'https://www.simplilearn.com/ice9/free_resources_article_thumb/Types_of_Database.jpg';
+    }
+    
+    if (field.includes('web') || field.includes('frontend') || field.includes('ui')) {
+      return 'https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg';
+    }
+    
+    // Generic certificate image
+    return 'https://assets-global.website-files.com/62e3ee10882dc50bcae8d07a/634970c53d6c9d5c068c7258_9-2-education-certificate-premium.jpg';
+  }
+  
+  // Default education themed image
+  return 'https://blog.coursify.me/wp-content/uploads/2018/08/graduation.jpg';
 };
 
 // Get an appropriate color scheme based on education type
@@ -114,6 +179,18 @@ const Education: React.FC<EducationProps> = ({ education }) => {
                 >
                   {/* Color gradient top bar */}
                   <div className={`h-1.5 w-full bg-gradient-to-r ${colorScheme.iconBg}`}></div>
+                  
+                  {/* Education realistic image */}
+                  {getEducationImage(item) && isExpanded && (
+                    <div className="w-full h-48 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
+                      <img 
+                        src={getEducationImage(item)} 
+                        alt={item.degree}
+                        className="w-full h-full object-cover transition-all duration-700 ease-out transform hover:scale-105"
+                      />
+                    </div>
+                  )}
                   
                   <div className={`p-6 bg-gradient-to-br ${colorScheme.cardGradient} dark:${colorScheme.darkCardGradient}`}>
                     <div className="flex items-start">

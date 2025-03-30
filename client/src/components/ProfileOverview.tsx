@@ -24,7 +24,7 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 animate-pulse opacity-20 blur-xl"></div>
               <div className="rounded-full w-56 h-56 mx-auto border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden z-10 relative hover:scale-105 transition-transform duration-300 ease-in-out">
                 <img 
-                  src={profile.profileImage || "/images/profile.png"} 
+                  src="/images/dinesh.png" 
                   alt={`${profile.name} profile`}
                   className="w-full h-full object-cover"
                 />
@@ -58,38 +58,6 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed">
               {profile.about}
             </p>
-            
-            <div className="flex flex-wrap gap-6 mb-6">
-              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
-                  <i className="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Location</div>
-                  <span className="font-medium">{profile.location}</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
-                  <i className="fas fa-envelope text-blue-600 dark:text-blue-400"></i>
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Email</div>
-                  <span className="font-medium">{profile.email}</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-3">
-                  <i className="fas fa-globe text-blue-600 dark:text-blue-400"></i>
-                </div>
-                <div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Website</div>
-                  <span className="font-medium">{profile.website}</span>
-                </div>
-              </div>
-            </div>
             
             <div className="mt-8">
               <div className="mb-5 flex items-center">

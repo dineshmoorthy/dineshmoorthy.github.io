@@ -49,6 +49,74 @@ const getCategoryIcon = (category: string): string | undefined => {
   }
 };
 
+// Get shields.io badge for a skill - more professional look
+const getShieldsBadge = (skillName: string, percentage: number): string => {
+  // Format the skill name for the URL
+  const formattedName = skillName.replace(/\s+/g, '%20');
+  
+  // Color mapping based on skill percentage
+  let color = 'blue';
+  if (percentage >= 90) color = 'brightgreen';
+  else if (percentage >= 80) color = 'green';
+  else if (percentage >= 70) color = 'yellowgreen';
+  else if (percentage >= 60) color = 'yellow';
+  else if (percentage < 60) color = 'orange';
+  
+  // Return the shields.io badge URL with appropriate styling
+  return `https://img.shields.io/badge/${formattedName}-${percentage}%25-${color}?style=for-the-badge&logo=${getLogoIdentifier(skillName)}&logoColor=white`;
+};
+
+// Function to map skill names to shields.io logo identifiers
+const getLogoIdentifier = (skillName: string): string => {
+  const name = skillName.toLowerCase();
+  
+  // Map common skills to their shields.io logo identifiers
+  if (name.includes('java')) return 'java';
+  if (name.includes('spring')) return 'spring';
+  if (name.includes('aws')) return 'amazonaws';
+  if (name.includes('docker')) return 'docker';
+  if (name.includes('kubernetes') || name.includes('k8s')) return 'kubernetes';
+  if (name.includes('jenkins')) return 'jenkins';
+  if (name.includes('git')) return 'git';
+  if (name.includes('kafka')) return 'apachekafka';
+  if (name.includes('hibernate')) return 'hibernate';
+  if (name.includes('maven')) return 'apachemaven';
+  if (name.includes('oracle')) return 'oracle';
+  if (name.includes('mysql')) return 'mysql';
+  if (name.includes('mongodb')) return 'mongodb';
+  if (name.includes('postgresql')) return 'postgresql';
+  if (name.includes('redis')) return 'redis';
+  if (name.includes('jira')) return 'jira';
+  if (name.includes('azure')) return 'microsoftazure';
+  if (name.includes('microservice')) return 'spring';
+  
+  // Default (no logo)
+  return '';
+};
+
+// Get realistic technology category image
+const getCategoryImage = (category: string): string | undefined => {
+  const name = category.toLowerCase();
+  
+  if (name.includes('j2ee') || name.includes('java')) {
+    return 'https://www.oracle.com/a/tech/img/cb88-java-logo-001.jpg';
+  }
+  
+  if (name.includes('cloud') || name.includes('devops')) {
+    return 'https://www.eginnovations.com/blog/wp-content/uploads/2021/09/Cloud-DevOps.jpg';
+  }
+  
+  if (name.includes('database')) {
+    return 'https://www.pcworld.com/wp-content/uploads/2023/04/database_binary_data_storage_analytics_by_monsitj_getty_images-100752708-orig-5.jpg?quality=50&strip=all';
+  }
+  
+  if (name.includes('soft')) {
+    return 'https://images.squarespace-cdn.com/content/v1/5d8133574e8870104e4b5d90/1618675793656-GJXF3X6O83OT2PQ2YXWC/soft-skills.jpg';
+  }
+  
+  return undefined;
+};
+
 const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
   const [hoveredTool, setHoveredTool] = useState<number | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
@@ -80,27 +148,44 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 transform scale-[0.96] group-hover:scale-100 transition-transform duration-500"></div>
             
-            <CardContent className="p-8 z-10 relative">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/40 dark:to-indigo-900/40 p-3 flex items-center justify-center mr-5 overflow-hidden transform group-hover:rotate-3 transition-transform duration-300">
-                  {getCategoryIcon(category.title) ? (
-                    <img 
-                      src={getCategoryIcon(category.title)} 
-                      alt={category.title}
-                      className="w-10 h-10 object-contain"
-                    />
-                  ) : (
-                    <i className={`${category.icon} text-2xl text-blue-600 dark:text-blue-400`}></i>
-                  )}
+            {/* Category image - realistic visuals */}
+            {getCategoryImage(category.title) && (
+              <div className="w-full h-32 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+                <img 
+                  src={getCategoryImage(category.title)} 
+                  alt={category.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 p-4 z-20">
+                  <h3 className="text-xl font-bold text-white drop-shadow-md">{category.title}</h3>
                 </div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{category.title}</h3>
               </div>
+            )}
+            
+            <CardContent className="p-8 z-10 relative">
+              {!getCategoryImage(category.title) && (
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/40 dark:to-indigo-900/40 p-3 flex items-center justify-center mr-5 overflow-hidden transform group-hover:rotate-3 transition-transform duration-300">
+                    {getCategoryIcon(category.title) ? (
+                      <img 
+                        src={getCategoryIcon(category.title)} 
+                        alt={category.title}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <i className={`${category.icon} text-2xl text-blue-600 dark:text-blue-400`}></i>
+                    )}
+                  </div>
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{category.title}</h3>
+                </div>
+              )}
               
               <div className="space-y-6">
                 {category.skills.map((skill, index) => (
                   <div className="mb-4" key={index}>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center">
+                    <div className="flex items-center justify-between mb-2 flex-wrap">
+                      <div className="flex items-center mb-2">
                         {getTechLogo(skill.name) ? (
                           <img 
                             src={getTechLogo(skill.name)} 
@@ -114,9 +199,13 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
                         )}
                         <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
                       </div>
-                      <span className="text-gray-500 dark:text-gray-400 font-medium text-sm rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-1">
-                        {skill.percentage}%
-                      </span>
+                      
+                      {/* Shields.io badge */}
+                      <img 
+                        src={getShieldsBadge(skill.name, skill.percentage)} 
+                        alt={`${skill.name} - ${skill.percentage}%`}
+                        className="h-6 transform transition-all duration-300 hover:scale-105"
+                      />
                     </div>
                     
                     <div className="relative">
