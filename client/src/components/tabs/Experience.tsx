@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Experience as ExperienceType } from "@shared/types";
 import { Timeline, TimelineItem } from "@/components/ui/timeline";
 import { Badge } from "@/components/ui/badge";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface ExperienceProps {
   experiences: ExperienceType[];
@@ -52,52 +53,76 @@ const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
   const [hoveredBadge, setHoveredBadge] = useState<string | null>(null);
   
   return (
-    <div className="animate-fade-in">
-      <div className="flex items-center mb-8">
-        <div className="w-2 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mr-4"></div>
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-          Work Experience
-        </h2>
-      </div>
+    <div>
+      <ScrollReveal type="up">
+        <div className="flex items-center mb-8">
+          <div className="w-2 h-8 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full mr-4"></div>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent">
+            Work Experience
+          </h2>
+        </div>
+      </ScrollReveal>
       
       {/* Decorative elements */}
       <div className="relative mb-8 overflow-hidden">
-        <div className="absolute -top-16 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-16 left-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-16 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-16 left-0 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
       </div>
       
       <Timeline>
         {experiences.map((experience, index) => (
-          <TimelineItem
-            key={experience.id}
-            icon={<i className="fas fa-briefcase text-xl"></i>}
-            date={`${experience.startDate} - ${experience.endDate}`}
-            title={experience.title}
-            isLast={index === experiences.length - 1}
+          <ScrollReveal 
+            key={experience.id} 
+            type="right" 
+            delay={Math.min(index + 1, 8) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}
+            as="div"
           >
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">{experience.company}</h3>
-            <p className="text-gray-500 dark:text-gray-400 mb-4">{experience.location}</p>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">{experience.description}</p>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {experience.skills.map((skill, i) => {
-                const badgeStyles = getTechBadgeStyle(skill);
-                const isHovered = hoveredBadge === `${experience.id}-${i}`;
+            <TimelineItem
+              icon={<i className="fas fa-briefcase text-xl text-white"></i>}
+              date={
+                <div className="bg-black/40 backdrop-blur-sm px-2 py-1 rounded text-gray-300 border border-gray-700">
+                  {experience.startDate} - {experience.endDate}
+                </div>
+              }
+              title={
+                <div className="bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent font-bold">
+                  {experience.title}
+                </div>
+              }
+              isLast={index === experiences.length - 1}
+            >
+              <div className="bg-black/30 backdrop-blur-sm rounded-lg border border-gray-800 p-5 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                <h3 className="text-xl font-semibold text-white">{experience.company}</h3>
+                <p className="text-gray-400 mb-4">{experience.location}</p>
                 
-                return (
-                  <Badge 
-                    key={i} 
-                    variant="outline" 
-                    className={`${badgeStyles.bg} ${badgeStyles.text} font-medium border ${badgeStyles.border} transition-all duration-300 ${isHovered ? 'scale-110 shadow-md' : ''}`}
-                    onMouseEnter={() => setHoveredBadge(`${experience.id}-${i}`)}
-                    onMouseLeave={() => setHoveredBadge(null)}
-                  >
-                    <i className={`${badgeStyles.icon} mr-1.5`}></i>
-                    {skill}
-                  </Badge>
-                );
-              })}
-            </div>
-          </TimelineItem>
+                <ScrollReveal type="up" delay={2}>
+                  <p className="text-gray-300 mb-4">{experience.description}</p>
+                </ScrollReveal>
+                
+                <ScrollReveal type="up" delay={3}>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {experience.skills.map((skill, i) => {
+                      const badgeStyles = getTechBadgeStyle(skill);
+                      const isHovered = hoveredBadge === `${experience.id}-${i}`;
+                      
+                      return (
+                        <Badge 
+                          key={i} 
+                          variant="outline" 
+                          className={`${badgeStyles.bg} ${badgeStyles.text} font-medium border ${badgeStyles.border} transition-all duration-300 ${isHovered ? 'scale-110 shadow-md' : ''}`}
+                          onMouseEnter={() => setHoveredBadge(`${experience.id}-${i}`)}
+                          onMouseLeave={() => setHoveredBadge(null)}
+                        >
+                          <i className={`${badgeStyles.icon} mr-1.5`}></i>
+                          {skill}
+                        </Badge>
+                      );
+                    })}
+                  </div>
+                </ScrollReveal>
+              </div>
+            </TimelineItem>
+          </ScrollReveal>
         ))}
       </Timeline>
     </div>

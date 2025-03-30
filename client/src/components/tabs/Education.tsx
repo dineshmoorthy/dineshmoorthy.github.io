@@ -3,6 +3,7 @@ import { Education as EducationType } from "@shared/types";
 import { Timeline, TimelineItem } from "@/components/ui/timeline";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface EducationProps {
   education: EducationType[];
@@ -112,31 +113,31 @@ const getEducationImage = (item: EducationType): string | undefined => {
 const getEducationColorScheme = (degree: string) => {
   if (degree.toLowerCase().includes('certification')) {
     return {
-      iconBg: 'from-emerald-400 to-teal-500',
-      cardGradient: 'from-emerald-50 to-teal-50',
-      darkCardGradient: 'from-emerald-900/20 to-teal-900/20',
-      timelineDot: 'bg-emerald-500',
-      timelineLine: 'bg-emerald-200'
+      iconBg: 'from-cyan-500 to-fuchsia-500',
+      cardGradient: 'from-cyan-900/20 to-fuchsia-900/20',
+      border: 'border-cyan-800/50',
+      glow: 'cyan',
+      textGradient: 'from-cyan-400 to-fuchsia-400'
     };
   }
   
   if (degree.toLowerCase().includes('master')) {
     return {
-      iconBg: 'from-blue-400 to-indigo-500',
-      cardGradient: 'from-blue-50 to-indigo-50',
-      darkCardGradient: 'from-blue-900/20 to-indigo-900/20',
-      timelineDot: 'bg-blue-500',
-      timelineLine: 'bg-blue-200'
+      iconBg: 'from-fuchsia-500 to-cyan-500',
+      cardGradient: 'from-fuchsia-900/20 to-cyan-900/20',
+      border: 'border-fuchsia-800/50',
+      glow: 'fuchsia', 
+      textGradient: 'from-fuchsia-400 to-cyan-400'
     };
   }
   
   // Default scheme for bachelor's or other education
   return {
-    iconBg: 'from-purple-400 to-indigo-500',
-    cardGradient: 'from-purple-50 to-indigo-50',
-    darkCardGradient: 'from-purple-900/20 to-indigo-900/20',
-    timelineDot: 'bg-purple-500',
-    timelineLine: 'bg-purple-200'
+    iconBg: 'from-cyan-500 to-blue-500',
+    cardGradient: 'from-cyan-900/20 to-blue-900/20',
+    border: 'border-cyan-800/50',
+    glow: 'blue',
+    textGradient: 'from-cyan-400 to-blue-400'
   };
 };
 
@@ -144,111 +145,186 @@ const Education: React.FC<EducationProps> = ({ education }) => {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
 
   return (
-    <div className="animate-fade-in">
-      <div className="flex items-center mb-8">
-        <div className="w-2 h-8 bg-blue-600 rounded-full mr-4"></div>
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200">Education & Certifications</h2>
-      </div>
+    <div>
+      <ScrollReveal type="up">
+        <div className="flex items-center mb-8">
+          <div className="w-2 h-8 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full mr-4"></div>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent">
+            Education & Certifications
+          </h2>
+        </div>
+      </ScrollReveal>
       
       {/* Decorative elements */}
-      <div className="relative mb-8">
-        <div className="absolute -top-16 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-16 left-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+      <div className="relative mb-8 overflow-hidden">
+        <div className="absolute -top-16 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-16 left-0 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
       </div>
       
       <div className="space-y-12 relative">
-        {/* Timeline connector */}
-        <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-purple-200 to-transparent dark:from-blue-800 dark:via-purple-800 z-0"></div>
+        {/* Timeline connector with cyberpunk styling */}
+        <div className="absolute left-9 top-0 bottom-0 w-0.5 overflow-hidden z-0">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500 via-fuchsia-500 to-cyan-500 bg-[length:100%_300%] animate-gradient-y"></div>
+          
+          {/* Dotted pattern overlay */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="h-full w-full opacity-50" 
+                style={{ 
+                  backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 5%, rgba(255, 255, 255, 0.2) 5%, rgba(255, 255, 255, 0.2) 10%)', 
+                  backgroundSize: '0.5px 20px'
+                }}>
+            </div>
+          </div>
+          
+          {/* Scanner effect */}
+          <div className="absolute inset-0 w-full overflow-hidden pointer-events-none">
+            <div className="h-24 w-full bg-gradient-to-b from-transparent via-cyan-400 to-transparent absolute animate-scan"></div>
+          </div>
+        </div>
         
         {education.map((item, index) => {
           const colorScheme = getEducationColorScheme(item.degree);
           const isExpanded = expandedItem === item.id;
           
           return (
-            <div key={item.id} className="relative z-10">
-              {/* Timeline dot */}
-              <div className={`absolute left-9 w-5 h-5 -ml-2.5 rounded-full ${colorScheme.timelineDot} border-4 border-white dark:border-gray-900 shadow-md`}></div>
+            <ScrollReveal 
+              key={item.id} 
+              type="left" 
+              delay={Math.min(index + 1, 8) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}
+              className="relative z-10"
+            >
+              {/* Cyberpunk timeline node */}
+              <div className="absolute left-9 w-5 h-5 -ml-2.5 rounded-full z-10">
+                <div className="absolute inset-0 bg-black rounded-full"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r ${colorScheme.iconBg} rounded-full opacity-80 animate-pulse`}></div>
+                <div className="absolute inset-0 rounded-full border border-white/20"></div>
+              </div>
               
               <div className="ml-20 relative">
-                {/* Date indicator */}
-                <div className="inline-block px-4 py-1.5 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">
+                {/* Date indicator with cyberpunk styling */}
+                <div className="inline-block px-4 py-1.5 rounded-md bg-black/40 backdrop-blur-sm text-gray-300 border border-gray-700 text-sm font-medium mb-3 shadow-[0_0_10px_rgba(80,150,250,0.3)]">
                   {item.startDate} - {item.endDate}
                 </div>
                 
                 <Card 
-                  className={`overflow-hidden transition-all duration-500 ease-out hover:shadow-lg cursor-pointer border-0 ${
-                    isExpanded ? 'shadow-lg' : 'shadow-md'
-                  }`}
+                  className={`overflow-hidden transition-all duration-500 ease-out border-0 
+                    bg-black/30 backdrop-blur-sm border ${colorScheme.border} 
+                    shadow-[0_0_15px_rgba(80,250,250,0.15)] 
+                    hover:shadow-[0_0_30px_rgba(80,250,250,0.3)] 
+                    cursor-pointer`}
                   onClick={() => setExpandedItem(isExpanded ? null : item.id)}
                 >
-                  {/* Color gradient top bar */}
-                  <div className={`h-1.5 w-full bg-gradient-to-r ${colorScheme.iconBg}`}></div>
+                  {/* Animated top bar */}
+                  <div className="relative h-1 w-full overflow-hidden">
+                    <div className={`h-full w-full bg-gradient-to-r ${colorScheme.iconBg}`}></div>
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div className="w-20 h-full bg-white/50 animate-glow-line-x"></div>
+                    </div>
+                  </div>
                   
-                  {/* Education realistic image */}
+                  {/* Education image with overlay and mask effects */}
                   {getEducationImage(item) && isExpanded && (
-                    <div className="w-full h-48 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
+                    <div className="relative w-full h-48 overflow-hidden">
+                      {/* Glitch/scan effect overlay */}
+                      <div className="absolute inset-0 z-10 opacity-40 pointer-events-none scan-lines-dark"></div>
+                      
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50 z-10"></div>
+                      
+                      {/* Image with cyberpunk filter */}
                       <img 
                         src={getEducationImage(item)} 
                         alt={item.degree}
-                        className="w-full h-full object-cover transition-all duration-700 ease-out transform hover:scale-105"
+                        className="w-full h-full object-cover transition-all duration-700 ease-out transform hover:scale-105 filter saturate-[1.2] contrast-[1.1]"
                       />
+                      
+                      {/* Tech overlay line effect */}
+                      <div className="absolute inset-0 z-20 overflow-hidden opacity-20 pointer-events-none">
+                        <div className="h-1 w-full bg-cyan-400 absolute top-[40%] animate-scan-fast"></div>
+                      </div>
                     </div>
                   )}
                   
-                  <div className={`p-6 bg-gradient-to-br ${colorScheme.cardGradient} dark:${colorScheme.darkCardGradient}`}>
+                  <div className={`p-6 bg-gradient-to-br ${colorScheme.cardGradient}`}>
                     <div className="flex items-start">
-                      {/* Institution logo or icon */}
-                      <div className="mr-5 flex-shrink-0">
-                        <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${colorScheme.iconBg} flex items-center justify-center p-3 shadow-md overflow-hidden`}>
-                          {getInstitutionLogo(item.institution) ? (
-                            <img 
-                              src={getInstitutionLogo(item.institution)} 
-                              alt={item.institution}
-                              className="w-full h-full object-contain"
-                            />
-                          ) : (
-                            <i className={`${item.degree.toLowerCase().includes("certification") ? "fas fa-certificate" : "fas fa-graduation-cap"} text-2xl text-white`}></i>
-                          )}
+                      {/* Institution logo with cyberpunk styling */}
+                      <ScrollReveal type="scale" delay={2}>
+                        <div className="mr-5 flex-shrink-0">
+                          <div className="relative group">
+                            <div className={`absolute -inset-1 bg-gradient-to-r ${colorScheme.iconBg} rounded-md opacity-70 blur-sm group-hover:opacity-100 transition-all duration-500`}></div>
+                            <div className="relative w-16 h-16 rounded-md bg-black flex items-center justify-center p-3 overflow-hidden border border-white/10">
+                              {getInstitutionLogo(item.institution) ? (
+                                <img 
+                                  src={getInstitutionLogo(item.institution)} 
+                                  alt={item.institution}
+                                  className="w-full h-full object-contain"
+                                />
+                              ) : (
+                                <i className={`${item.degree.toLowerCase().includes("certification") ? "fas fa-certificate" : "fas fa-graduation-cap"} text-2xl text-white`}></i>
+                              )}
+                              
+                              {/* Scan effect */}
+                              <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
+                                <div className="h-8 w-full bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent absolute animate-scan-fast"></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      </ScrollReveal>
                       
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className={`text-xl font-bold text-transparent bg-gradient-to-r ${colorScheme.iconBg} bg-clip-text`}>
-                            {item.degree}
-                          </h3>
+                          <ScrollReveal type="right" delay={2}>
+                            <h3 className={`text-xl font-bold bg-gradient-to-r ${colorScheme.textGradient} bg-clip-text text-transparent`}>
+                              {item.degree}
+                            </h3>
+                          </ScrollReveal>
                           
-                          {/* Interactive expand indicator */}
-                          <div className={`w-6 h-6 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-sm transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-                            <i className="fas fa-chevron-down text-xs text-gray-500 dark:text-gray-400"></i>
+                          {/* Cyberpunk expand button */}
+                          <div className={`relative w-8 h-8 transition-transform duration-500 ${isExpanded ? 'rotate-180' : ''}`}>
+                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center">
+                              <div className={`w-5 h-5 rounded-full flex items-center justify-center border border-white/20`}>
+                                <i className="fas fa-chevron-down text-xs text-white/80"></i>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         
-                        <div className="mt-1.5 mb-3">
-                          <h4 className="font-semibold text-gray-700 dark:text-gray-300">{item.field}</h4>
-                          <p className="text-gray-600 dark:text-gray-400 text-sm">{item.institution}</p>
-                        </div>
-                        
-                        <div className={`transition-all duration-500 ease-out overflow-hidden ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                          <p className="text-gray-700 dark:text-gray-300 mb-4">
-                            {item.description}
-                          </p>
-                          
-                          <div className="flex flex-wrap gap-2 mt-4">
-                            {item.skills.map((skill, i) => (
-                              <Badge key={i} variant="outline" className="bg-white/80 dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-normal border-gray-200 dark:border-gray-700">
-                                {skill}
-                              </Badge>
-                            ))}
+                        <ScrollReveal type="right" delay={3}>
+                          <div className="mt-1.5 mb-3">
+                            <h4 className="font-semibold text-white/90">{item.field}</h4>
+                            <p className="text-gray-400 text-sm">{item.institution}</p>
                           </div>
+                        </ScrollReveal>
+                        
+                        <div className={`transition-all duration-700 ease-out overflow-hidden ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                          <ScrollReveal type="up" delay={4}>
+                            <p className="text-gray-300 mb-4">
+                              {item.description}
+                            </p>
+                          </ScrollReveal>
+                          
+                          <ScrollReveal type="up" delay={5}>
+                            <div className="flex flex-wrap gap-2 mt-4">
+                              {item.skills.map((skill, i) => (
+                                <Badge 
+                                  key={i} 
+                                  variant="outline" 
+                                  className="bg-black/60 text-white font-normal border-white/20 hover:bg-black/80 transition-colors duration-300 hover:border-cyan-500/50"
+                                >
+                                  {skill}
+                                </Badge>
+                              ))}
+                            </div>
+                          </ScrollReveal>
                         </div>
                       </div>
                     </div>
                   </div>
                 </Card>
               </div>
-            </div>
+            </ScrollReveal>
           );
         })}
       </div>
