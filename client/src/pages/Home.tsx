@@ -1,20 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import ProfileOverview from "@/components/ProfileOverview";
-import TabNavigation from "@/components/TabNavigation";
-import Experience from "@/components/tabs/Experience";
-import Skills from "@/components/tabs/Skills";
-import Education from "@/components/tabs/Education";
 import Achievements from "@/components/tabs/Achievements";
-import Projects from "@/components/tabs/Projects";
 import FutureProjects from "@/components/tabs/FutureProjects";
 import Resume from "@/components/tabs/Resume";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { portfolioData } from "@/data/portfolio-data";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const Home: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("experience");
   const [isLoaded, setIsLoaded] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
   
@@ -23,49 +17,6 @@ const Home: React.FC = () => {
     setTimeout(() => {
       setIsLoaded(true);
     }, 500);
-  }, []);
-  
-  // Scroll to section when anchor links are clicked
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        let tabId = hash.substring(1);
-        
-        // Map URL hash to corresponding tab ID
-        const tabMapping: Record<string, string> = {
-          "experience": "experience",
-          "skills": "skills",
-          "education": "education",
-          "achievements": "achievements",
-          "projects": "projects",
-          "futureprojects": "futureProjects",
-          "resume": "resume",
-          "contact": "contact"
-        };
-        
-        if (tabId === "futureprojects") {
-          setActiveTab("futureProjects");
-          tabId = "futureprojects"; // Keep the ID for scrolling
-        } else if (tabMapping[tabId]) {
-          setActiveTab(tabMapping[tabId]);
-        }
-        
-        setTimeout(() => {
-          const element = document.getElementById(tabId);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      }
-    };
-    
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Check hash on initial load
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
   }, []);
   
   return (
@@ -98,32 +49,56 @@ const Home: React.FC = () => {
         
         <ProfileOverview profile={portfolioData.profile} />
         
-        {/* Anchor points for each section */}
-        <div id="experience" className="pt-12 -mt-12"></div>
-        <div id="skills" className="pt-12 -mt-12"></div> 
-        <div id="education" className="pt-12 -mt-12"></div>
-        <div id="projects" className="pt-12 -mt-12"></div>
+        {/* Anchor points for remaining sections */}
+        <div id="achievements" className="pt-12 -mt-12"></div>
         <div id="futureprojects" className="pt-12 -mt-12"></div>
         <div id="resume" className="pt-12 -mt-12"></div>
         
-        <TabNavigation 
-          activeTab={activeTab} 
-          onTabChange={setActiveTab} 
-        />
-        
-        <section className="container mx-auto px-4 pb-16 relative">
-          {/* Content background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black dark:from-gray-950 dark:via-gray-900/30 dark:to-gray-950 theme-transition"></div>
+        {/* Achievements Section */}
+        <section id="achievements-section" className="container mx-auto px-4 py-16 relative">
+          <ScrollReveal type="up">
+            <div className="relative z-10 mb-8">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent mb-3">Achievements</h2>
+              <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full"></div>
+            </div>
+          </ScrollReveal>
           
-          {/* Tab content with cyberpunk styles */}
           <div className="relative z-10">
-            {activeTab === "experience" && <Experience experiences={portfolioData.experiences} />}
-            {activeTab === "skills" && <Skills skillCategories={portfolioData.skillCategories} tools={portfolioData.tools} />}
-            {activeTab === "education" && <Education education={portfolioData.education} />}
-            {activeTab === "achievements" && <Achievements achievements={portfolioData.achievements} />}
-            {activeTab === "projects" && <Projects projects={portfolioData.projects} />}
-            {activeTab === "futureProjects" && <FutureProjects futureProjects={portfolioData.futureProjects} />}
-            {activeTab === "resume" && <Resume profile={portfolioData.profile} />}
+            <Achievements achievements={portfolioData.achievements} />
+          </div>
+          
+          {/* Decorative horizontal line */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+        </section>
+        
+        {/* Future Projects Section */}
+        <section id="futureprojects-section" className="container mx-auto px-4 py-16 relative">
+          <ScrollReveal type="up">
+            <div className="relative z-10 mb-8">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent mb-3">Future Projects</h2>
+              <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full"></div>
+            </div>
+          </ScrollReveal>
+          
+          <div className="relative z-10">
+            <FutureProjects futureProjects={portfolioData.futureProjects} />
+          </div>
+          
+          {/* Decorative horizontal line */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+        </section>
+        
+        {/* Resume Section */}
+        <section id="resume-section" className="container mx-auto px-4 py-16 relative">
+          <ScrollReveal type="up">
+            <div className="relative z-10 mb-8">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent mb-3">Resume</h2>
+              <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-full"></div>
+            </div>
+          </ScrollReveal>
+          
+          <div className="relative z-10">
+            <Resume profile={portfolioData.profile} />
           </div>
           
           {/* Decorative horizontal line */}

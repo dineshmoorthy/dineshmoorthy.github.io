@@ -6,6 +6,10 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import ContactModal from "@/components/ContactModal";
+import ExperienceModal from "@/components/ExperienceModal";
+import SkillsModal from "@/components/SkillsModal";
+import EducationModal from "@/components/EducationModal";
+import ProjectsModal from "@/components/ProjectsModal";
 import { portfolioData } from "@/data/portfolio-data";
 
 // Create a simple hash-based routing hook for GitHub Pages
@@ -73,6 +77,10 @@ function App() {
       <div className="app-container">
         <Router />
         <ContactModal profile={portfolioData.profile} />
+        <ExperienceModal experiences={portfolioData.experiences} />
+        <SkillsModal skillCategories={portfolioData.skillCategories} tools={portfolioData.tools} />
+        <EducationModal education={portfolioData.education} />
+        <ProjectsModal projects={portfolioData.projects} />
         <Toaster />
       </div>
     </QueryClientProvider>

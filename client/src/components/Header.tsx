@@ -63,10 +63,50 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <div className="space-x-6 text-sm font-medium text-gray-300">
-            <a href="#experience" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Experience</a>
-            <a href="#skills" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Skills</a>
-            <a href="#education" className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4">Education</a>
-            <a href="#projects" className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4">Projects</a>
+            <button 
+              className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4"
+              onClick={() => {
+                const modal = document.getElementById('experience-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
+            >
+              Experience
+            </button>
+            <button 
+              className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4"
+              onClick={() => {
+                const modal = document.getElementById('skills-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
+            >
+              Skills
+            </button>
+            <button 
+              className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4"
+              onClick={() => {
+                const modal = document.getElementById('education-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
+            >
+              Education
+            </button>
+            <button 
+              className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4"
+              onClick={() => {
+                const modal = document.getElementById('projects-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
+            >
+              Projects
+            </button>
           </div>
           
           <div className="flex items-center space-x-4">
@@ -127,34 +167,54 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         {/* Mobile Menu */}
         <div className={`fixed inset-0 bg-black/95 dark:bg-gray-900/95 backdrop-blur-md flex flex-col justify-center items-center space-y-8 z-50 transition-all duration-500 theme-transition ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <nav className="flex flex-col items-center space-y-8">
-            <a 
-              href="#experience" 
+            <button 
               className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                const modal = document.getElementById('experience-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
             >
               Experience
-            </a>
-            <a 
-              href="#skills" 
+            </button>
+            <button 
               className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                const modal = document.getElementById('skills-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
             >
               Skills
-            </a>
-            <a 
-              href="#education" 
+            </button>
+            <button 
               className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                const modal = document.getElementById('education-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
             >
               Education
-            </a>
-            <a 
-              href="#projects" 
+            </button>
+            <button 
               className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                const modal = document.getElementById('projects-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
             >
               Projects
-            </a>
+            </button>
             
             {/* Divider line */}
             <div className="w-16 h-px bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-50"></div>
