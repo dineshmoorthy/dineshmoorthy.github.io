@@ -35,17 +35,14 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
   }, []);
   
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md theme-transition ${scrolled ? 'bg-black/80 dark:bg-gray-900/80 py-3' : 'bg-transparent py-5'}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center relative">
-        {/* Cyberpunk Logo */}
-        <div className="relative">
-          <div className={`absolute -inset-1 bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-lg opacity-70 blur transition-opacity ${scrolled ? 'opacity-75' : 'opacity-40'}`}></div>
-          <a href="#" className="relative block px-3 py-2 bg-black dark:bg-gray-900 rounded-lg">
-            <h1 className="text-xl md:text-2xl font-mono font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent tracking-tight">
-              <span className="inline-block transform hover:scale-105 transition-transform">D.MOORTHY</span>
-            </h1>
-          </a>
-        </div>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900/90 py-2' : 'bg-gray-900 py-3'}`}>
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
+        <a href="#" className="block">
+          <h1 className="text-xl md:text-2xl font-bold text-white">
+            D.MOORTHY
+          </h1>
+        </a>
         
         {/* Mobile Menu Button */}
         <button 
@@ -54,190 +51,100 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
           aria-label="Toggle menu"
         >
           <div className="relative w-6 h-5">
-            <span className={`absolute h-0.5 w-full bg-gradient-to-r from-cyan-400 to-fuchsia-400 rounded-full transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-2' : 'top-0'}`}></span>
-            <span className={`absolute h-0.5 w-full bg-gradient-to-r from-fuchsia-400 to-cyan-400 rounded-full top-2 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`absolute h-0.5 w-full bg-gradient-to-r from-cyan-400 to-fuchsia-400 rounded-full transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-2' : 'top-4'}`}></span>
+            <span className={`absolute h-0.5 w-full bg-white rounded-full transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 top-2' : 'top-0'}`}></span>
+            <span className={`absolute h-0.5 w-full bg-white rounded-full top-2 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+            <span className={`absolute h-0.5 w-full bg-white rounded-full transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 top-2' : 'top-4'}`}></span>
           </div>
         </button>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          <div className="space-x-6 text-sm font-medium text-gray-300">
-            <button 
-              className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4"
-              onClick={() => {
-                const modal = document.getElementById('experience-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Experience
-            </button>
-            <button 
-              className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4"
-              onClick={() => {
-                const modal = document.getElementById('skills-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Skills
-            </button>
-            <button 
-              className="hover:text-white transition-colors hover:underline decoration-cyan-500 decoration-2 underline-offset-4"
-              onClick={() => {
-                const modal = document.getElementById('education-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Education
-            </button>
-            <button 
-              className="hover:text-white transition-colors hover:underline decoration-fuchsia-500 decoration-2 underline-offset-4"
-              onClick={() => {
-                const modal = document.getElementById('projects-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Projects
-            </button>
+        <nav className="hidden md:flex items-center space-x-4">
+          <div className="space-x-4 text-sm font-medium text-gray-300">
+            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
+            <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+            <a href="#education" className="hover:text-white transition-colors">Education</a>
+            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+            <a href="#achievements" className="hover:text-white transition-colors">Achievements</a>
+            <a href="#futureProjects" className="hover:text-white transition-colors">Future Projects</a>
+            <a href="#resume" className="hover:text-white transition-colors">Resume</a>
           </div>
           
-          <div className="flex items-center space-x-4">
-            {/* More sections dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  size="icon" 
-                  className="relative w-9 h-9 rounded-lg bg-transparent border border-white/20 hover:bg-white/10 transition-colors"
-                >
-                  <div className="flex flex-col items-center justify-center space-y-1">
-                    <div className="w-1 h-1 rounded-full bg-cyan-400"></div>
-                    <div className="w-1 h-1 rounded-full bg-fuchsia-400"></div>
-                    <div className="w-1 h-1 rounded-full bg-cyan-400"></div>
-                  </div>
-                  <span className="sr-only">More sections</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="end" 
-                className="w-48 bg-black/90 backdrop-blur-md border border-white/10 text-white p-2"
-              >
-                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
-                  <a href="#futureprojects" className="flex items-center w-full py-1">
-                    <i className="fas fa-rocket mr-2 text-fuchsia-400"></i>
-                    <span>Future Projects</span>
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
-                  <a href="#resume" className="flex items-center w-full py-1">
-                    <i className="fas fa-file-alt mr-2 text-cyan-400"></i>
-                    <span>Resume</span>
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 rounded-md">
-                  <button 
-                    onClick={() => {
-                      // Show the Contact form in a modal or dropdown
-                      const modal = document.getElementById('contact-modal');
-                      if (modal) {
-                        modal.classList.remove('hidden');
-                      }
-                    }} 
-                    className="flex items-center w-full py-1"
-                  >
-                    <i className="fas fa-envelope mr-2 text-fuchsia-400"></i>
-                    <span>Send a message</span>
-                  </button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <div className="flex items-center space-x-3 pl-4 border-l border-gray-700">
+            <button 
+              onClick={() => {
+                const modal = document.getElementById('contact-modal');
+                if (modal) {
+                  modal.classList.remove('hidden');
+                }
+              }}
+              className="text-sm text-gray-300 hover:text-white flex items-center"
+            >
+              <i className="fas fa-envelope mr-1"></i>
+              <span>Contact</span>
+            </button>
             
             <ThemeToggle />
           </div>
         </nav>
         
         {/* Mobile Menu */}
-        <div className={`fixed inset-0 bg-black/95 dark:bg-gray-900/95 backdrop-blur-md flex flex-col justify-center items-center space-y-8 z-50 transition-all duration-500 theme-transition ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-          <nav className="flex flex-col items-center space-y-8">
-            <button 
-              className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
-              onClick={() => {
-                setIsMenuOpen(false);
-                const modal = document.getElementById('experience-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Experience
-            </button>
-            <button 
-              className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
-              onClick={() => {
-                setIsMenuOpen(false);
-                const modal = document.getElementById('skills-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Skills
-            </button>
-            <button 
-              className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors"
-              onClick={() => {
-                setIsMenuOpen(false);
-                const modal = document.getElementById('education-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Education
-            </button>
-            <button 
-              className="text-2xl font-bold text-white hover:text-fuchsia-400 transition-colors"
-              onClick={() => {
-                setIsMenuOpen(false);
-                const modal = document.getElementById('projects-modal');
-                if (modal) {
-                  modal.classList.remove('hidden');
-                }
-              }}
-            >
-              Projects
-            </button>
-            
-            {/* Divider line */}
-            <div className="w-16 h-px bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-50"></div>
-            
-            {/* More sections - directly in mobile menu but visually separated */}
+        <div className={`fixed inset-0 bg-gray-900/98 flex flex-col justify-center items-center z-50 transition-all duration-300 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          <nav className="flex flex-col items-center space-y-5">
             <a 
-              href="#futureprojects" 
-              className="text-xl font-medium text-white hover:text-fuchsia-400 transition-colors"
+              href="#experience" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              <i className="fas fa-rocket mr-2"></i>
+              Experience
+            </a>
+            <a 
+              href="#skills" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Skills
+            </a>
+            <a 
+              href="#education" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Education
+            </a>
+            <a 
+              href="#projects" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Projects
+            </a>
+            <a 
+              href="#achievements" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Achievements
+            </a>
+            <a 
+              href="#futureProjects" 
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Future Projects
             </a>
             <a 
               href="#resume" 
-              className="text-xl font-medium text-white hover:text-cyan-400 transition-colors"
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              <i className="fas fa-file-alt mr-2"></i>
               Resume
             </a>
+            
+            {/* Divider line */}
+            <div className="w-16 h-px bg-gray-700 my-2"></div>
+            
             <button 
-              className="text-xl font-medium text-white hover:text-fuchsia-400 transition-colors"
+              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
               onClick={() => {
                 setIsMenuOpen(false);
                 // Show the Contact form in a modal
@@ -248,7 +155,7 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
               }}
             >
               <i className="fas fa-envelope mr-2"></i>
-              Send a message
+              Contact
             </button>
             
             <div className="mt-4">
@@ -256,9 +163,6 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
             </div>
           </nav>
         </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-30"></div>
       </div>
     </header>
   );
