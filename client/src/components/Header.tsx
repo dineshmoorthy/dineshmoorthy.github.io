@@ -60,14 +60,7 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4">
-          <TabNavigation activeTab={""} onTabChange={(tab) => {
-            const element = document.getElementById(tab);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }} />
-          
-          <div className="flex items-center space-x-3 pl-4 border-l border-gray-700">
+          <div className="flex items-center space-x-3">
             <button 
               onClick={() => {
                 const modal = document.getElementById('contact-modal');
@@ -88,18 +81,6 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         {/* Mobile Menu */}
         <div className={`fixed inset-0 bg-gray-900/98 flex flex-col justify-center items-center z-50 transition-all duration-300 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <nav className="flex flex-col items-center space-y-5">
-            <TabNavigation 
-              activeTab="" 
-              onTabChange={(tab) => {
-                const element = document.getElementById(tab);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                  setIsMenuOpen(false);
-                }
-              }}
-              className="flex-col space-y-4"
-            />
-            
             {/* Divider line */}
             <div className="w-16 h-px bg-gray-700 my-2"></div>
             
