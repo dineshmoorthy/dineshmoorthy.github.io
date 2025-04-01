@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         {/* Logo */}
         <a href="#" className="block">
           <h1 className="text-xl md:text-2xl font-bold text-white">
-            D.MOORTHY
+            
           </h1>
         </a>
 
