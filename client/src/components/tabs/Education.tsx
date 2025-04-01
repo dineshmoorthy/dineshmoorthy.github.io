@@ -19,6 +19,9 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   if (name.includes('oracle')) return '/images/institutions/Logo_oracle.jpg';
   if (name.includes('azure') || (name.includes('microsoft') && name.includes('certified'))) return '/images/institutions/azure.png';
   
+  // Return path relative to public directory
+  return undefined;
+  
   // Map popular institutions to their logos
   if (name.includes('stanford')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Stanford_Cardinal_logo.svg/1200px-Stanford_Cardinal_logo.svg.png';
   if (name.includes('mit') || name.includes('massachusetts institute')) return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/2560px-MIT_logo.svg.png';
@@ -54,6 +57,10 @@ const getEducationImage = (item: EducationType): string | undefined => {
   const institution = item.institution.toLowerCase();
   const degree = item.degree.toLowerCase();
   const field = item.field.toLowerCase();
+
+  // First try to get institution-specific image
+  const institutionLogo = getInstitutionLogo(institution);
+  if (institutionLogo) return institutionLogo;
   
   // Universities and college campus images
   if (
