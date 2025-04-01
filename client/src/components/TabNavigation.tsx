@@ -7,6 +7,7 @@ interface TabNavigationProps {
 
 const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabChange }) => {
   const tabs = [
+    { id: "profile", label: "Profile", icon: "fas fa-user" },
     { id: "experience", label: "Experience", icon: "fas fa-briefcase" },
     { id: "skills", label: "Skills", icon: "fas fa-code" },
     { id: "education", label: "Education", icon: "fas fa-graduation-cap" },

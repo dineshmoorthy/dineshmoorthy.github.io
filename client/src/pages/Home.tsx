@@ -78,8 +78,6 @@ const Home: React.FC = () => {
         {/* Add a spacer so the fixed header doesn't overlap content */}
         <div className="pt-20"></div>
         
-        <ProfileOverview profile={portfolioData.profile} />
-        
         <TabNavigation 
           activeTab={activeTab} 
           onTabChange={setActiveTab} 
@@ -88,6 +86,7 @@ const Home: React.FC = () => {
         <section className="container mx-auto px-4 pb-16">
           {/* Tab content */}
           <div>
+            {activeTab === "profile" && <ProfileOverview profile={portfolioData.profile} />}
             {activeTab === "experience" && <Experience experiences={portfolioData.experiences} />}
             {activeTab === "skills" && <Skills skillCategories={portfolioData.skillCategories} tools={portfolioData.tools} />}
             {activeTab === "education" && <Education education={portfolioData.education} />}
