@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import { portfolioData } from "@/data/portfolio-data";
 
 const Home: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("experience");
+  const [activeTab, setActiveTab] = useState("profile");
   const [isLoaded, setIsLoaded] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
   
