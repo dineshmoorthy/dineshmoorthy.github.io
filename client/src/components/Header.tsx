@@ -59,15 +59,12 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4">
-          <div className="space-x-4 text-sm font-medium text-gray-300">
-            <a href="#experience" className="hover:text-white transition-colors">Experience</a>
-            <a href="#skills" className="hover:text-white transition-colors">Skills</a>
-            <a href="#education" className="hover:text-white transition-colors">Education</a>
-            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="#achievements" className="hover:text-white transition-colors">Achievements</a>
-            <a href="#futureProjects" className="hover:text-white transition-colors">Future Projects</a>
-            <a href="#resume" className="hover:text-white transition-colors">Resume</a>
-          </div>
+          <TabNavigation activeTab={""} onTabChange={(tab) => {
+            const element = document.getElementById(tab);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }} />
           
           <div className="flex items-center space-x-3 pl-4 border-l border-gray-700">
             <button 
@@ -90,55 +87,17 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         {/* Mobile Menu */}
         <div className={`fixed inset-0 bg-gray-900/98 flex flex-col justify-center items-center z-50 transition-all duration-300 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <nav className="flex flex-col items-center space-y-5">
-            <a 
-              href="#experience" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Experience
-            </a>
-            <a 
-              href="#skills" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Skills
-            </a>
-            <a 
-              href="#education" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Education
-            </a>
-            <a 
-              href="#projects" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a 
-              href="#achievements" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Achievements
-            </a>
-            <a 
-              href="#futureProjects" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Future Projects
-            </a>
-            <a 
-              href="#resume" 
-              className="text-lg font-medium text-white hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Resume
-            </a>
+            <TabNavigation 
+              activeTab="" 
+              onTabChange={(tab) => {
+                const element = document.getElementById(tab);
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                  setIsMenuOpen(false);
+                }
+              }}
+              className="flex-col space-y-4"
+            />
             
             {/* Divider line */}
             <div className="w-16 h-px bg-gray-700 my-2"></div>
