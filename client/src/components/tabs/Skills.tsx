@@ -1,8 +1,6 @@
-
 import React from "react";
 import { SkillCategory, Tool } from "@shared/types";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 interface SkillsProps {
   skillCategories: SkillCategory[];
@@ -10,23 +8,29 @@ interface SkillsProps {
 }
 
 const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
-  const skillSets = {
-    j2ee: ["Spring Boot", "Microservices", "Docker", "AJSC 6", "Spring Cloud Contract", "Core Java", "Java 1.6", "Java 8", "Java 17", "JDBC", "Servlets", "JSP", "Java Beans", "J2EE Spring Framework", "Spring MVC", "REST / SOAP Web Services", "SonarQube", "Splunk logs", "Scala (Basic)"],
-    testing: ["Junit", "Mockito", "Power Mockito", "Rest Assured", "Spring Cloud Contract", "ALM"],
-    servers: ["Apache", "Tomcat", "JBoss Application Server"],
-    buildTools: ["Apache Ant", "Apache Maven", "Gradle"],
-    ftpTools: ["WinSCP", "SecureFX"],
-    databases: ["Oracle", "MongoDB", "MySQL", "DynamoDB"],
-    designTools: ["Microsoft Azure RP Pro v7", "StarUML"],
-    versionControl: ["SVN", "Clear case", "Git"],
-    codeQuality: ["PMD", "Findbugs", "CheckStyle", "Checkmarx", "Sonar Lint"],
-    ides: ["Eclipse", "IntelliJ", "STS"],
-    methodologies: ["Waterfall", "Agile", "TDD", "BDD"],
-    projectTools: ["Jira", "TFS"],
-    cicd: ["Jenkins", "Harness"],
-    cloud: ["Azure", "Amazon Web Services (AWS)", "PCF (Pivotal Cloud Foundry)"],
-    aws: ["DynamoDB", "AWS Lambda", "API Gateway", "IAM", "Security Groups", "CloudWatch", "EC2", "Auto Scaling", "Amazon S3", "ELB", "SQS", "SNS"],
-    others: ["Postman", "SOAPUI", "JSON", "XML", "WSDL", "Thymeleaf", "Apache Camel", "Active MQ", "Common Logging Framework", "GWT", "IBM Extreme Scale", "Hibernate", "HPQC", "Citrix", "VDI"]
+  const renderBadge = (skill: string, category: string) => {
+    const style = getBadgeStyle(category);
+    const formattedSkill = encodeURIComponent(skill);
+    return (
+      <img
+        key={skill}
+        src={`https://img.shields.io/badge/${formattedSkill}-${style.color}?style=for-the-badge&logo=${style.logo}&logoColor=white`}
+        alt={skill}
+        className="m-1"
+      />
+    );
+  };
+
+  const getBadgeStyle = (category: string) => {
+    const styles: { [key: string]: { color: string, logo: string } } = {
+      'J2EE': { color: '007396', logo: 'java' },
+      'Spring': { color: '6DB33F', logo: 'spring' },
+      'AWS': { color: '232F3E', logo: 'amazonaws' },
+      'Database': { color: '4479A1', logo: 'mysql' },
+      'Testing': { color: 'E34F26', logo: 'junit5' },
+      'DevOps': { color: '2496ED', logo: 'docker' }
+    };
+    return styles[category] || { color: '555555', logo: 'code' };
   };
 
   return (
@@ -42,16 +46,16 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
           <CardContent className="p-6">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center mr-4">
-                <i className="fas fa-code text-xl text-blue-600 dark:text-blue-400"></i>
+                <i className="fab fa-java text-xl text-blue-600 dark:text-blue-400"></i>
               </div>
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">J2EE Technologies</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {skillSets.j2ee.map((skill, index) => (
-                <Badge key={index} variant="outline" className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">
-                  {skill}
-                </Badge>
-              ))}
+              {renderBadge('Java-17', 'J2EE')}
+              {renderBadge('Spring_Boot', 'Spring')}
+              {renderBadge('Microservices', 'J2EE')}
+              {renderBadge('Docker', 'DevOps')}
+              {renderBadge('REST_API', 'J2EE')}
             </div>
           </CardContent>
         </Card>
@@ -66,15 +70,50 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">Cloud & AWS Services</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {[...skillSets.cloud, ...skillSets.aws].map((skill, index) => (
-                <Badge key={index} variant="outline" className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300">
-                  {skill}
-                </Badge>
-              ))}
+              {renderBadge('AWS', 'AWS')}
+              {renderBadge('Lambda', 'AWS')}
+              {renderBadge('DynamoDB', 'AWS')}
+              {renderBadge('S3', 'AWS')}
+              {renderBadge('API_Gateway', 'AWS')}
             </div>
           </CardContent>
         </Card>
 
+        {/* Databases */}
+        <Card className="overflow-hidden border-0 shadow-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/40 flex items-center justify-center mr-4">
+                <i className="fas fa-database text-xl text-green-600 dark:text-green-400"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">Databases</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {renderBadge('MySQL', 'Database')}
+              {renderBadge('MongoDB', 'Database')}
+              {renderBadge('Oracle', 'Database')}
+              {renderBadge('DynamoDB', 'AWS')}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Testing */}
+        <Card className="overflow-hidden border-0 shadow-lg">
+          <CardContent className="p-6">
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mr-4">
+                <i className="fas fa-vial text-xl text-amber-600 dark:text-amber-400"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">Testing & Quality</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {renderBadge('JUnit', 'Testing')}
+              {renderBadge('Mockito', 'Testing')}
+              {renderBadge('REST_Assured', 'Testing')}
+              {renderBadge('SonarQube', 'Testing')}
+            </div>
+          </CardContent>
+        </Card>
         {/* Tools & Infrastructure */}
         <Card className="overflow-hidden border-0 shadow-lg">
           <CardContent className="p-6">
@@ -112,7 +151,6 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
             </div>
           </CardContent>
         </Card>
-
         {/* Testing & Quality */}
         <Card className="overflow-hidden border-0 shadow-lg">
           <CardContent className="p-6">
@@ -131,7 +169,6 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
             </div>
           </CardContent>
         </Card>
-
         {/* Additional Tools & Technologies */}
         <Card className="overflow-hidden border-0 shadow-lg">
           <CardContent className="p-6">
@@ -153,6 +190,25 @@ const Skills: React.FC<SkillsProps> = ({ skillCategories, tools }) => {
       </div>
     </div>
   );
+};
+
+const skillSets = {
+  j2ee: ["Spring Boot", "Microservices", "Docker", "AJSC 6", "Spring Cloud Contract", "Core Java", "Java 1.6", "Java 8", "Java 17", "JDBC", "Servlets", "JSP", "Java Beans", "J2EE Spring Framework", "Spring MVC", "REST / SOAP Web Services", "SonarQube", "Splunk logs", "Scala (Basic)"],
+  testing: ["Junit", "Mockito", "Power Mockito", "Rest Assured", "Spring Cloud Contract", "ALM"],
+  servers: ["Apache", "Tomcat", "JBoss Application Server"],
+  buildTools: ["Apache Ant", "Apache Maven", "Gradle"],
+  ftpTools: ["WinSCP", "SecureFX"],
+  databases: ["Oracle", "MongoDB", "MySQL", "DynamoDB"],
+  designTools: ["Microsoft Azure RP Pro v7", "StarUML"],
+  versionControl: ["SVN", "Clear case", "Git"],
+  codeQuality: ["PMD", "Findbugs", "CheckStyle", "Checkmarx", "Sonar Lint"],
+  ides: ["Eclipse", "IntelliJ", "STS"],
+  methodologies: ["Waterfall", "Agile", "TDD", "BDD"],
+  projectTools: ["Jira", "TFS"],
+  cicd: ["Jenkins", "Harness"],
+  cloud: ["Azure", "Amazon Web Services (AWS)", "PCF (Pivotal Cloud Foundry)"],
+  aws: ["DynamoDB", "AWS Lambda", "API Gateway", "IAM", "Security Groups", "CloudWatch", "EC2", "Auto Scaling", "Amazon S3", "ELB", "SQS", "SNS"],
+  others: ["Postman", "SOAPUI", "JSON", "XML", "WSDL", "Thymeleaf", "Apache Camel", "Active MQ", "Common Logging Framework", "GWT", "IBM Extreme Scale", "Hibernate", "HPQC", "Citrix", "VDI"]
 };
 
 export default Skills;
