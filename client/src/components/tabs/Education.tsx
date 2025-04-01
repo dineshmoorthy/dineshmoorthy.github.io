@@ -15,7 +15,7 @@ const getInstitutionLogo = (institutionName: string): string | undefined => {
   
   // Custom provided logos - use these first
   if (name.includes('anna') || name.includes('university')) return '/images/institutions/anna-university-chennai.jpg';
-  if (name.includes('ielts')) return '/images/institutions/ielts.jpg';
+  if (name.includes('ielts') || name.includes('british')) return '/images/institutions/ielts.jpg';
   if (name.includes('oracle')) return '/images/institutions/Logo_oracle.jpg';
   if (name.includes('azure') || (name.includes('microsoft') && name.includes('certified'))) return '/images/institutions/azure.png';
   
