@@ -1,6 +1,7 @@
 import React from "react";
 import { SkillCategory, Tool } from "@shared/types";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface SkillsProps {
   skillCategories: SkillCategory[];
