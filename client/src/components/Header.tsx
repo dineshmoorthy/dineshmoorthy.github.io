@@ -60,7 +60,13 @@ const Header: React.FC<HeaderProps> = ({ profile }) => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4">
-          <div className="flex items-center space-x-3">
+          <TabNavigation activeTab={""} onTabChange={(tab) => {
+            const element = document.getElementById(tab);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }} />
+          <div className="flex items-center space-x-3 pl-4 border-l border-gray-700">
             <button 
               onClick={() => {
                 const modal = document.getElementById('contact-modal');
