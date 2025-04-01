@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ProfileInfo } from "@shared/types";
 import ThemeToggle from "./ThemeToggle";
+import TabNavigation from "./TabNavigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
