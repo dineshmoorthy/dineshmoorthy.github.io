@@ -1,12 +1,12 @@
 import React from 'react';
 
 interface ProfileImageProps {
-  imageSrc: string;
+  imageSrc?: string;
   altText: string;
   className?: string;
 }
 
-const ProfileImage: React.FC<ProfileImageProps> = ({ imageSrc, altText, className = '' }) => {
+const ProfileImage: React.FC<ProfileImageProps> = ({ imageSrc = "/images/dinesh.png", altText, className = '' }) => {
   return (
     <div className={`relative ${className}`}>
       <img

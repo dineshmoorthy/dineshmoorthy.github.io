@@ -73,7 +73,7 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
                   
                   {/* Profile image */}
                   <img 
-                    src="/images/dinesh.png" 
+                    src={profile.profileImage} 
                     alt={profile.name}
                     className="w-full h-full object-cover z-0"
                   />

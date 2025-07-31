@@ -66,6 +66,7 @@ export interface FutureProject {
   type: string;
   skills: string[];
   githubLink?: string;
+  websiteLink?: string;
 }
 
 export interface ProfileInfo {

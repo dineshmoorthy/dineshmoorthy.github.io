@@ -9,7 +9,7 @@ export const portfolioData: PortfolioData = {
     email: "contactdineshmoorthy@gmail.com",
     website: "portfolio link",
     phone: "+44-7553688946",
-    profileImage: "/images/profile.png",
+    profileImage: "/images/dinesh.png",
     resumeLink: "/resume.pdf",
     socialLinks: {
       github: "https://github.com/sponsors/dineshmoorthy/",
@@ -311,39 +311,40 @@ export const portfolioData: PortfolioData = {
   futureProjects: [
     {
       id: 1,
-      title: "AI-Enhanced Predictive Maintenance System",
-      description: "Planning to develop a machine learning-based system that predicts equipment failures before they occur, using historical maintenance data and real-time sensor inputs.",
-      plannedDate: "Q3 2025",
-      type: "Enterprise Solution",
-      skills: ["Machine Learning", "Java", "Spring Boot", "Kafka", "Time Series Analysis"],
-      githubLink: "https://github.com/dineshmoorthy/predictive-maintenance"
+      title: "GradProjects.co.uk - International Job Platform",
+      description: "A comprehensive platform designed to connect international job seekers with recruitment agents and employers. The platform features advanced matching algorithms, secure communication channels, and streamlined visa application processes. Built with modern web technologies and integrated payment systems for premium services.",
+      plannedDate: "Q1 2025",
+      type: "Web Platform",
+      skills: ["React", "Node.js", "MongoDB", "AWS", "Payment Integration", "Real-time Chat", "Matching Algorithms"],
+      githubLink: "https://github.com/dineshmoorthy/gradprojects-platform",
+      websiteLink: "https://gradprojects.co.uk"
     },
     {
       id: 2,
+      title: "AI-Powered LLM Assistant with Ollama & LangChain",
+      description: "Developing an advanced artificial intelligence system using Ollama for local LLM deployment, LangChain for orchestration, and MongoDB for data persistence. The system includes natural language processing capabilities, custom prompt engineering, and integration with various data sources for context-aware responses.",
+      plannedDate: "Q2 2025",
+      type: "AI/ML Application",
+      skills: ["Ollama", "LangChain", "NLP", "MongoDB", "Python", "FastAPI", "Vector Databases", "Prompt Engineering", "RAG (Retrieval-Augmented Generation)"],
+      githubLink: "https://github.com/dineshmoorthy/ai-llm-assistant"
+    },
+    {
+      id: 3,
       title: "Advanced Cloud Migration Framework",
       description: "Working on a comprehensive framework to automate the migration of legacy applications to cloud-native architectures, with particular focus on financial services requirements.",
-      plannedDate: "Q4 2025",
+      plannedDate: "Q3 2025",
       type: "Cloud Framework",
       skills: ["AWS", "Azure", "Java", "Docker", "Kubernetes", "Terraform"],
       githubLink: "https://github.com/dineshmoorthy/cloud-migration"
     },
     {
-      id: 3,
+      id: 4,
       title: "Blockchain-Based Identity Verification",
       description: "Planning a secure identity verification system using blockchain technology to provide immutable records while maintaining privacy and compliance with regulations.",
-      plannedDate: "Q1 2026",
+      plannedDate: "Q4 2025",
       type: "Security Application",
       skills: ["Blockchain", "Java", "Security", "Cryptography", "Smart Contracts"],
       githubLink: "https://github.com/dineshmoorthy/blockchain-identity"
-    },
-    {
-      id: 4,
-      title: "Advanced Continuous Delivery Platform",
-      description: "Designing a next-generation continuous delivery platform that integrates AI for testing optimization, deployment risk assessment, and automated rollback decisions.",
-      plannedDate: "Q2 2026",
-      type: "DevOps Platform",
-      skills: ["DevOps", "CI/CD", "Machine Learning", "Java", "Kubernetes"],
-      githubLink: "https://github.com/dineshmoorthy/ai-devops"
     }
   ]
 };

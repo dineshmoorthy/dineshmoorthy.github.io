@@ -38,8 +38,18 @@ const FutureProjects: React.FC<FutureProjectsProps> = ({ futureProjects }) => {
                     ))}
                   </div>
                   
-                  {project.githubLink && (
-                    <div className="flex justify-end">
+                  <div className="flex justify-end gap-3">
+                    {project.websiteLink && (
+                      <a 
+                        href={project.websiteLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-primary hover:text-primary/80 transition-colors flex items-center"
+                      >
+                        <i className="fas fa-external-link-alt mr-1"></i> Visit Website
+                      </a>
+                    )}
+                    {project.githubLink && (
                       <a 
                         href={project.githubLink} 
                         target="_blank" 
@@ -48,8 +58,8 @@ const FutureProjects: React.FC<FutureProjectsProps> = ({ futureProjects }) => {
                       >
                         <i className="fab fa-github mr-1"></i> GitHub Repository
                       </a>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </CardContent>
