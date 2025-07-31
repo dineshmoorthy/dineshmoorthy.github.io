@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ProfileInfo } from "@shared/types";
 import { Button } from "@/components/ui/button";
+import dineshImage from "/images/dinesh.png";
 
 interface ProfileOverviewProps {
   profile: ProfileInfo;
@@ -73,9 +74,15 @@ const ProfileOverview: React.FC<ProfileOverviewProps> = ({ profile }) => {
                   
                   {/* Profile image */}
                   <img 
-                    src={profile.profileImage} 
+                    src={dineshImage} 
                     alt={profile.name}
                     className="w-full h-full object-cover z-0"
+                    onError={(e) => {
+                      console.error('Failed to load image:', dineshImage);
+                    }}
+                    onLoad={() => {
+                      console.log('Image loaded successfully:', dineshImage);
+                    }}
                   />
                   
                   {/* Scanner effect */}
