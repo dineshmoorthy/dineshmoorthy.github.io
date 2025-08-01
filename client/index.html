@@ -4,12 +4,699 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Professional Portfolio</title>
+    <title>Dinesh Dakshinamoorthy - Resume</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #007bff;
+      }
+
+      .name {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .title {
+        font-size: 1.3rem;
+        color: #007bff;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 0.9rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #666;
+      }
+
+      .contact-item i {
+        color: #007bff;
+        width: 16px;
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 30px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 3px solid #000;
+        text-transform: uppercase;
+      }
+
+      .skills-grid {
+        display: grid;
+        gap: 15px;
+      }
+
+      .skill-category {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .skill-category:last-child {
+        border-bottom: none;
+      }
+
+      .skill-category h4 {
+        font-weight: 600;
+        color: #007bff;
+        margin-bottom: 8px;
+      }
+
+      .skill-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .skill-list li {
+        margin-bottom: 5px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .skill-list li::before {
+        content: "•";
+        color: #007bff;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .summary {
+        text-align: justify;
+        line-height: 1.7;
+      }
+
+      .education-item {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px dotted #ccc;
+      }
+
+      .education-item:last-child {
+        border-bottom: none;
+      }
+
+      .education-degree {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .education-school {
+        color: #007bff;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .education-details {
+        display: flex;
+        gap: 20px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .education-details i {
+        color: #999;
+        width: 14px;
+      }
+
+      .languages {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .language-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #ccc;
+      }
+
+      .language-item:last-child {
+        border-bottom: none;
+      }
+
+      .language-info {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .language-name {
+        font-weight: 500;
+        color: #333;
+        font-size: 0.95rem;
+      }
+
+      .language-level {
+        color: #666;
+        font-size: 0.85rem;
+        font-weight: 400;
+      }
+
+      .language-circles {
+        display: flex;
+        gap: 3px;
+        margin: 0 15px;
+      }
+
+      .circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid #007bff;
+      }
+
+      .circle.filled {
+        background-color: #007bff;
+      }
+
+      .circle.empty {
+        background-color: #e0e0e0;
+        border-color: #ccc;
+      }
+
+      .certification {
+        color: #007bff;
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 0.95rem;
+      }
+
+      .certification-issuer {
+        color: #666;
+        font-size: 0.85rem;
+      }
+
+      .certification-issuer:last-child {
+        margin-bottom: 0;
+      }
+
+      .experience-item {
+        margin-bottom: 25px;
+      }
+
+      .job-title {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .company {
+        color: #007bff;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .job-details {
+        display: flex;
+        gap: 20px;
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .job-description {
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      .job-description ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .job-description li {
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .job-description li::before {
+        content: "•";
+        color: #007bff;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .achievements {
+        margin-top: 30px;
+      }
+
+      .achievement-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .achievement-icon {
+        color: #007bff;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      .achievement-text {
+        flex: 1;
+      }
+
+      .achievement-title {
+        font-weight: 600;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .name {
+          font-size: 2rem;
+        }
+
+        .container {
+          margin: 10px;
+          padding: 15px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+      <!-- Header Section -->
+      <div class="header">
+        <h1 class="name">DINESH DAKSHINAMOORTHY</h1>
+        <p class="title">Senior Software Engineer</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+447553688946</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contactdineshmoorthy@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <span>linkedin.com/in/dinesh-dakshinamoorthy87</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-globe"></i>
+            <span>dineshmoorthy.github.io/selfportfolio/</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>United Kingdom</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Skills Section -->
+          <div class="section">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4>J2EE Technologies</h4>
+                <ul class="skill-list">
+                  <li>Microservices, Docker, AJSC 6, Spring Cloud Contract, core java, JDBC, Java Beans, J2EE Spring Framework, Spring MVC, JDBC, REST / SOAP Web Services, SonarQube, Splunk logs</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Web/Application Servers</h4>
+                <ul class="skill-list">
+                  <li>Apache, Tomcat, JBoss Application Server</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Databases</h4>
+                <ul class="skill-list">
+                  <li>Oracle, Mongo, MySQL, DynamoDB</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Version Control</h4>
+                <ul class="skill-list">
+                  <li>SVN, Clear case, Git</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Build Tool</h4>
+                <ul class="skill-list">
+                  <li>Apache Ant, Apache Maven, Gradle</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Message Services</h4>
+                <ul class="skill-list">
+                  <li>Solace, SQS (Amazon Simple Queue Service), SNS (Amazon Simple Notification Service), Active MQ</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Testing</h4>
+                <ul class="skill-list">
+                  <li>JUnit, Mockito, Power Mockito, Rest Assured, Spring Cloud Contract, ALM, Apache JMeter</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>AWS Services</h4>
+                <ul class="skill-list">
+                  <li>DynamoDB, IAM, Security Groups, CloudWatch, EC2, Auto Scaling, Amazon S3, Elastic Load Balancer, CloudFront</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Cloud Technologies</h4>
+                <ul class="skill-list">
+                  <li>Amazon Web Services (AWS), PCF (Pivotal Cloud Foundry), Azure</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Project Management Tools</h4>
+                <ul class="skill-list">
+                  <li>Jira, TFS</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Code Quality</h4>
+                <ul class="skill-list">
+                  <li>PMD, Find Bugs, Check Style, Checkmarx, Sonar Lint, Thread Fix</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Methodologies</h4>
+                <ul class="skill-list">
+                  <li>Waterfall, Agile, TDD, BDD</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>IDEs & FTP</h4>
+                <ul class="skill-list">
+                  <li>Eclipse, IntelliJ, STS, Win SCP, Secure FX</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Others</h4>
+                <ul class="skill-list">
+                  <li>Postman, SOAPUI, JSON, XML, WSDL, Thymeleaf, Apache Camel, common logging framework, Jenkins, GWT, IBM Extreme scale, Hibernate, HPQC (HP Quality Center), Citrix, VDI</li>
+                </ul>
+              </div>
+
+              <div class="skill-category">
+                <h4>Basic</h4>
+                <ul class="skill-list">
+                  <li>Scala, Docker, ReactJS, Python</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Section -->
+          <div class="section">
+            <h2 class="section-title">EXPERIENCE</h2>
+            <div class="experience-item">
+              <div class="job-title">Senior Software Engineer</div>
+              <div class="company">Wells Fargo International Solutions Private Ltd</div>
+              <div class="job-details">
+                <span><i class="fas fa-calendar"></i> 02/2022 - 08/2024</span>
+                <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+              </div>
+              <div class="job-description">
+                <ul>
+                  <li>Full ownership of backend microservices: Develop, test and deploy.</li>
+                  <li>Replaced <strong>Jenkins</strong> with <strong>Harness CI</strong>, reducing deployment time by 35% and accelerating development velocity by 25% while cutting costs.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="job-title">Software Engineer</div>
+              <div class="company">Wells Fargo International Solutions Private Ltd</div>
+              <div class="job-details">
+                <span><i class="fas fa-calendar"></i> 06/2021 - 01/2022</span>
+                <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
+              </div>
+              <div class="job-description">
+                <ul>
+                  <li>Migrated batch scheduled jobs (<strong>Cron</strong>) to <strong>Kafka</strong>-driven real-time updates, enabling instant balance processing vs. overnight delays.</li>
+                  <li>Migrated legacy systems from <strong>Java 8</strong> to <strong>Java 17</strong>, <strong>Spring Boot 2.3.6</strong> to <strong>3.x</strong>, and <strong>JUnit 4</strong> to <strong>5</strong>, enhancing performance, security, and standardization via <strong>common logging</strong>.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="job-title">Technical Lead</div>
+              <div class="company">HCL Technologies Ltd</div>
+              <div class="job-details">
+                <span><i class="fas fa-calendar"></i> 01/2016 - 06/2021</span>
+                <span><i class="fas fa-map-marker-alt"></i> Chennai, India</span>
+              </div>
+              <div class="job-description">
+                <ul>
+                  <li>Led 7 engineers <strong>cross-functionally</strong> to deliver 100% on-time projects (<strong>ING Bank</strong>, <strong>AT&T</strong>, <strong>CenturyLink</strong>) using <strong>AWS Lambda/API Gateway</strong>, scaling to 1M+ requests/hour by resolving dependencies.</li>
+                  <li>Architected <strong>scalable</strong> solutions by optimizing code quality, maintaining critical environments, and designing a high-throughput API to ensure <strong>zero downtime</strong> during traffic spikes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="job-title">Software Engineer</div>
+              <div class="company">Hexaware Technologies</div>
+              <div class="job-details">
+                <span><i class="fas fa-calendar"></i> 05/2014 - 09/2016</span>
+                <span><i class="fas fa-map-marker-alt"></i> Chennai, India</span>
+              </div>
+              <div class="job-description">
+                <ul>
+                  <li>Engineered high-performance Java-based applications for enterprise clients including <strong>Delta Airlines</strong> and <strong>Aon Hewitt</strong>; resolved SEV3/SEV4 production incidents, maintaining 99.9% system availability.</li>
+                  <li>Drove 20% improvement in code quality by implementing standardized reviews, mentoring 5+ engineers, and establishing best practices that reduced production defects by 35%.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="job-title">Software Engineer</div>
+              <div class="company">Notus Soft Solutions</div>
+              <div class="job-details">
+                <span><i class="fas fa-calendar"></i> 10/2010 - 05/2014</span>
+                <span><i class="fas fa-map-marker-alt"></i> Chennai, India</span>
+              </div>
+              <div class="job-description">
+                <ul>
+                  <li>Designed and developed enterprise applications using <strong>Java 6</strong>, <strong>J2EE</strong>, <strong>Servlets</strong>, <strong>JSP</strong>, and <strong>EJB 3.0</strong>, improving system throughput by 35% for clients <strong>Rane Group</strong> and <strong>GV Builders</strong>.</li>
+                  <li>Built <strong>SOAP/RESTful</strong> web services (<strong>JAX-WS/JAX-RS</strong>) to integrate modules, reducing data processing time by 25%.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Summary Section -->
+          <div class="section">
+            <h2 class="section-title">SUMMARY</h2>
+            <p class="summary">
+              Around 13+ years of IT Experience in building robust solutions across the full development lifecycle. Passionate about leading high-performing teams, architecting optimized systems, and aligning cutting-edge technology with strategic business objectives.
+            </p>
+          </div>
+
+          <!-- Education Section -->
+          <div class="section">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-item">
+              <div class="education-degree">MSc in Advanced Computer Science</div>
+              <div class="education-school">University of Leicester</div>
+              <div class="education-details">
+                <span><i class="fas fa-calendar"></i> 09/2024 - 10/2025</span>
+                <span><i class="fas fa-map-marker-alt"></i> United Kingdom</span>
+              </div>
+            </div>
+            <div class="education-item">
+              <div class="education-degree">Bachelor of Engineering (Electronics & Communication)</div>
+              <div class="education-school">Anna University</div>
+              <div class="education-details">
+                <span><i class="fas fa-calendar"></i> 04/2005 - 04/2009</span>
+                <span><i class="fas fa-map-marker-alt"></i> Chennai, India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages Section -->
+          <div class="section">
+            <h2 class="section-title">LANGUAGES</h2>
+            <div class="languages">
+              <div class="language-item">
+                <div class="language-info">
+                  <span class="language-name">English</span>
+                  <span class="language-level">Native</span>
+                </div>
+                <div class="language-circles">
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                </div>
+              </div>
+              <div class="language-item">
+                <div class="language-info">
+                  <span class="language-name">Tamil</span>
+                  <span class="language-level">Native</span>
+                </div>
+                <div class="language-circles">
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                  <div class="circle filled"></div>
+                </div>
+              </div>
+              <div class="language-item">
+                <div class="language-info">
+                  <span class="language-name">Dutch</span>
+                  <span class="language-level">Beginner</span>
+                </div>
+                <div class="language-circles">
+                  <div class="circle filled"></div>
+                  <div class="circle empty"></div>
+                  <div class="circle empty"></div>
+                  <div class="circle empty"></div>
+                  <div class="circle empty"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Section -->
+          <div class="section">
+            <h2 class="section-title">CERTIFICATION</h2>
+            <div class="certification">
+              Oracle Certified Professional, Java SE 6 Programmer
+            </div>
+            <div class="certification-issuer">Oracle</div>
+            
+            <div class="certification">
+              AZ-900: Microsoft Azure Fundamentals, Oct 2022
+            </div>
+            <div class="certification-issuer">Microsoft</div>
+            
+            <div class="certification">
+              AWS Certified Solutions Architect - Associate
+            </div>
+            <div class="certification-issuer">AWS</div>
+          </div>
+
+          <!-- Key Achievements Section -->
+          <div class="section achievements">
+            <h2 class="section-title">KEY ACHIEVEMENTS</h2>
+            <div class="achievement-item">
+              <i class="fas fa-gem achievement-icon"></i>
+              <div class="achievement-text">
+                <div class="achievement-title">Improved Deployment Efficiency:</div>
+                Reduced deployment time by 35% with CI pipeline migration.
+              </div>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-gem achievement-icon"></i>
+              <div class="achievement-text">
+                <div class="achievement-title">Effective Team Leadership:</div>
+                Led a team to achieve 100% successful projects.
+              </div>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-gem achievement-icon"></i>
+              <div class="achievement-text">
+                <div class="achievement-title">Boosted Code Quality:</div>
+                Increased code quality by 20% through comprehensive reviews.
+              </div>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-gem achievement-icon"></i>
+              <div class="achievement-text">
+                <div class="achievement-title">Enhanced System Scalability:</div>
+                Handled peak loads of 1 million requests per hour with AWS.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
