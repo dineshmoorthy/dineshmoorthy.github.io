@@ -1,6 +1,6 @@
 # GitHub Pages Deployment Guide
 
-This project is configured to deploy to GitHub Pages at: https://dineshmoorthy.github.io/selfportfolio
+This project is configured to deploy to GitHub Pages at: https://dineshmoorthy.github.io
 
 ## Setup Instructions
 
@@ -36,7 +36,7 @@ The project includes a GitHub Actions workflow that automatically deploys when y
 
 - **Client App**: Located in `/client` directory
 - **Build Output**: `dist/public/` directory
-- **Base URL**: `/selfportfolio/` (configured in vite.config.ts)
+- **Base URL**: `/` (configured in vite.config.ts)
 - **Routing**: Hash-based routing for GitHub Pages compatibility
 
 ## Important Files

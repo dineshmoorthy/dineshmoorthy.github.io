@@ -12,5 +12,5 @@ echo "🌐 Deploying to GitHub Pages..."
 npm run deploy
 
 echo "✅ Deployment complete!"
-echo "🌍 Your site will be available at: https://dineshmoorthy.github.io/selfportfolio"
+echo "🌍 Your site will be available at: https://dineshmoorthy.github.io"
 echo "⏰ It may take a few minutes for changes to appear." 
