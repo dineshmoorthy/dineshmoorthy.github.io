@@ -64,6 +64,7 @@ export interface FutureProject {
   description: string;
   plannedDate: string;
   type: string;
+  image: string;
   skills: string[];
   githubLink?: string;
   websiteLink?: string;

@@ -315,6 +315,7 @@ export const portfolioData: PortfolioData = {
       description: "A comprehensive platform designed to connect international job seekers with recruitment agents and employers. The platform features advanced matching algorithms, secure communication channels, and streamlined visa application processes. Built with modern web technologies and integrated payment systems for premium services.",
       plannedDate: "Q1 2025",
       type: "Web Platform",
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
       skills: ["React", "Node.js", "MongoDB", "AWS", "Payment Integration", "Real-time Chat", "Matching Algorithms"],
       githubLink: "https://github.com/dineshmoorthy/gradprojects-platform",
       websiteLink: "https://gradprojects.co.uk"
@@ -325,6 +326,7 @@ export const portfolioData: PortfolioData = {
       description: "Developing an advanced artificial intelligence system using Ollama for local LLM deployment, LangChain for orchestration, and MongoDB for data persistence. The system includes natural language processing capabilities, custom prompt engineering, and integration with various data sources for context-aware responses.",
       plannedDate: "Q2 2025",
       type: "AI/ML Application",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecadf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
       skills: ["Ollama", "LangChain", "NLP", "MongoDB", "Python", "FastAPI", "Vector Databases", "Prompt Engineering", "RAG (Retrieval-Augmented Generation)"],
       githubLink: "https://github.com/dineshmoorthy/ai-llm-assistant"
     },
@@ -334,6 +336,7 @@ export const portfolioData: PortfolioData = {
       description: "Working on a comprehensive framework to automate the migration of legacy applications to cloud-native architectures, with particular focus on financial services requirements.",
       plannedDate: "Q3 2025",
       type: "Cloud Framework",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
       skills: ["AWS", "Azure", "Java", "Docker", "Kubernetes", "Terraform"],
       githubLink: "https://github.com/dineshmoorthy/cloud-migration"
     },
@@ -343,6 +346,7 @@ export const portfolioData: PortfolioData = {
       description: "Planning a secure identity verification system using blockchain technology to provide immutable records while maintaining privacy and compliance with regulations.",
       plannedDate: "Q4 2025",
       type: "Security Application",
+      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=300&q=80",
       skills: ["Blockchain", "Java", "Security", "Cryptography", "Smart Contracts"],
       githubLink: "https://github.com/dineshmoorthy/blockchain-identity"
     }
